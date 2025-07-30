@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Místico - Descubre tu Destino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pantalla de carga -->
+    <div class="loading-screen">
+        <div class="horus-eye">
+            <div class="eye-symbol">𓂀</div>
+        </div>
+    </div>
+
+    <!-- Partículas brillantes -->
+    <div class="sparkles" id="sparkles"></div>
+
+    <div class="container">
+        <!-- Banner con slogans -->
+        <div class="banner">
+            <div class="slogan" id="slogan"></div>
+        </div>
+
+        <!-- Sección principal -->
+        <div class="main-section">
+            <h1 style="font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
+                ✨ Tarot Místico ✨
+            </h1>
+            
+            <div class="cards-container" id="cardsContainer">
+                <div class="tarot-card" id="card1">
+                    <div class="card-face card-back">
+                        <div>🔮<br>TAROT</div>
+                    </div>
+                    <div class="card-face card-front">
+                        <div class="card-name" id="cardName1"></div>
+                        <div class="card-meaning" id="cardMeaning1"></div>
+                    </div>
+                </div>
+                
+                <div class="tarot-card" id="card2">
+                    <div class="card-face card-back">
+                        <div>🔮<br>TAROT</div>
+                    </div>
+                    <div class="card-face card-front">
+                        <div class="card-name" id="cardName2"></div>
+                        <div class="card-meaning" id="cardMeaning2"></div>
+                    </div>
+                </div>
+                
+                <div class="tarot-card" id="card3">
+                    <div class="card-face card-back">
+                        <div>🔮<br>TAROT</div>
+                    </div>
+                    <div class="card-face card-front">
+                        <div class="card-name" id="cardName3"></div>
+                        <div class="card-meaning" id="cardMeaning3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="reveal-button" onclick="revealCards()">
+                🔮 Descubre tu Augur 🔮
+            </button>
+
+            <div class="interpretation" id="interpretation">
+                <h3>🌟 Interpretación de tu Tirada 🌟</h3>
+                <div id="interpretationText"></div>
+            </div>
+        </div>
+
+        <!-- Sección de contacto -->
+        <div class="contact-section">
+            <h3>🌙 ¿Buscas una Experiencia Más Profunda? 🌙</h3>
+            <p style="font-size: 18px; margin-bottom: 20px;">
+                Para una tirada presencial o por videollamada, donde podemos explorar 
+                más profundamente los misterios que las cartas tienen para revelarte
+            </p>
+            <a href="https://wa.me/5493874812606" class="whatsapp-link" target="_blank">
+                📱 Contactar por WhatsApp
+            </a>
+        </div>
+    </div>
+     <footer class="footer">
+        <!-- Cielo estrellado -->
+        <div class="starry-sky" id="starryBackground"></div>
+        
+        <!-- Efecto de resplandor -->
+        <div class="glow-effect"></div>
+        
+        <!-- Contenedor de vegetación -->
+        <div class="vegetation-container">
+            <!-- Raíces -->
+            <div class="roots">
+                <div class="root root-1"></div>
+                <div class="root root-2"></div>
+                <div class="root root-3"></div>
+                <div class="root root-4"></div>
+                <div class="root root-5"></div>
+            </div>
+
+            <!-- Pasto -->
+            <div class="grass" id="grassContainer"></div>
+
+            <!-- Plantas -->
+            <div class="plants">
+                <div class="plant plant-1">
+                    <div class="stem"></div>
+                    <div class="leaf" style="transform: rotate(-20deg);"></div>
+                    <div class="leaf" style="transform: rotate(15deg);"></div>
+                </div>
+                <div class="plant plant-2">
+                    <div class="stem"></div>
+                    <div class="leaf" style="transform: rotate(10deg);"></div>
+                    <div class="leaf" style="transform: rotate(-25deg);"></div>
+                    <div class="leaf" style="transform: rotate(5deg);"></div>
+                </div>
+                <div class="plant plant-3">
+                    <div class="stem"></div>
+                    <div class="leaf" style="transform: rotate(-15deg);"></div>
+                    <div class="leaf" style="transform: rotate(20deg);"></div>
+                </div>
+                <div class="plant plant-4">
+                    <div class="stem"></div>
+                    <div class="leaf" style="transform: rotate(12deg);"></div>
+                    <div class="leaf" style="transform: rotate(-18deg);"></div>
+                    <div class="leaf" style="transform: rotate(8deg);"></div>
+                </div>
+                <div class="plant plant-5">
+                    <div class="stem"></div>
+                    <div class="leaf" style="transform: rotate(-10deg);"></div>
+                    <div class="leaf" style="transform: rotate(25deg);"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Texto de la empresa -->
+        <div class="company-text">
+            Diseñado por Séptima Pacha Co.
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
