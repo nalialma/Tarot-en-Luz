@@ -2,7 +2,7 @@ const CARD_BACK_IMAGE = "https://i.pinimg.com/736x/7b/bd/32/7bbd32bb2cdfd281bc0b
 
 // Arcanos Mayores (22 cartas)
 const MAJOR_ARCANA = [
-    { id: 0, name: "El Loco", image: "https://i.pinimg.com/736x/6f/29/34/6f29342c0b7b9d2821346bd62cc840a1.jpg" },
+    { id: 0, name: "El Loco", image: "images/major/01-el-loco.jpg" },
     { id: 1, name: "El Mago", image: "images/major/01-el-mago.jpg" },
     { id: 2, name: "La Sacerdotisa", image: "images/major/02-la-sacerdotisa.jpg" },
     { id: 3, name: "La Emperatriz", image: "images/major/03-la-emperatriz.jpg" },
@@ -621,5 +621,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cargar las cartas al iniciar la página
     generateSpread();
 });
+
 
 generateCardsWithImages();
