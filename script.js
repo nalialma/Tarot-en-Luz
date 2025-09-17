@@ -11,20 +11,20 @@ const MAJOR_ARCANA = [
     { id: 5, name: "El Hierofante", image: "images/major/05-el-hierofante.jpeg" },
     { id: 6, name: "Los Enamorados", image: "images/major/06-los-enamorados.jpeg" },
     { id: 7, name: "El Carro", image: "images/major/07-el-carro.jpeg" },
-    { id: 8, name: "La Justicia", image: "images/major/08-la-justicia.jpeg" },
-    { id: 9, name: "El Ermitaño", image: "images/major/09-el-ermitano.jpeg" },
-    { id: 10, name: "La Rueda de la Fortuna", image: "images/major/10-la-rueda.jpeg" },
-    { id: 11, name: "La Fuerza", image: "images/major/11-la-fuerza.jpeg" },
-    { id: 12, name: "El Colgado", image: "images/major/12-el-colgado.jpeg" },
-    { id: 13, name: "La Muerte", image: "images/major/13-la-muerte.jpeg" },
-    { id: 14, name: "La Templanza", image: "images/major/14-la-templanza.jpeg" },
-    { id: 15, name: "El Diablo", image: "images/major/15-el-diablo.jpeg" },
-    { id: 16, name: "La Torre", image: "images/major/16-la-torre.jpeg" },
-    { id: 17, name: "La Estrella", image: "images/major/17-la-estrella.jpeg" },
-    { id: 18, name: "La Luna", image: "images/major/18-la-luna.jpeg" },
-    { id: 19, name: "El Sol", image: "images/major/19-el-sol.jpeg" },
-    { id: 20, name: "El Juicio", image: "images/major/20-el-juicio.jpeg" },
-    { id: 21, name: "El Mundo", image: "images/major/21-el-mundo.jpeg" }
+    { id: 8, name: "La Justicia", image: "images/major/08-la-justicia.jpg" },
+    { id: 9, name: "El Ermitaño", image: "images/major/09-el-ermitano.jpg" },
+    { id: 10, name: "La Rueda de la Fortuna", image: "images/major/10-la-rueda.jpg" },
+    { id: 11, name: "La Fuerza", image: "images/major/11-la-fuerza.jpg" },
+    { id: 12, name: "El Colgado", image: "images/major/12-el-colgado.jpg" },
+    { id: 13, name: "La Muerte", image: "images/major/13-la-muerte.jpg" },
+    { id: 14, name: "La Templanza", image: "images/major/14-la-templanza.jpg" },
+    { id: 15, name: "El Diablo", image: "images/major/15-el-diablo.jpg" },
+    { id: 16, name: "La Torre", image: "images/major/16-la-torre.jpg" },
+    { id: 17, name: "La Estrella", image: "images/major/17-la-estrella.jpg" },
+    { id: 18, name: "La Luna", image: "images/major/18-la-luna.jpg" },
+    { id: 19, name: "El Sol", image: "images/major/19-el-sol.jpg" },
+    { id: 20, name: "El Juicio", image: "images/major/20-el-juicio.jpg" },
+    { id: 21, name: "El Mundo", image: "images/major/21-el-mundo.jpg" }
 ];
 
 // Arcanos Menores completos (56 cartas) - 4 palos de 14 cartas cada uno
@@ -577,4 +577,5 @@ function validateImageStructure() {
     
     return missingImages.length === 0;
 }
+
 
