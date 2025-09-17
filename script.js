@@ -1,8 +1,9 @@
-const CARD_BACK_IMAGE = "https://i.pinimg.com/736x/7b/bd/32/7bbd32bb2cdfd281bc0b47a45f94779a.jpg"; // 👈 Cambia esta ruta por tu imagen
+// URL de la imagen del reverso de las cartas
+const CARD_BACK_IMAGE = "https://i.pinimg.com/736x/7b/bd/32/7bbd32bb2cdfd281bc0b47a45f94779a.jpg";
 
-// Arcanos Mayores (22 cartas)
+// Arcanos Mayores completos (22 cartas)
 const MAJOR_ARCANA = [
-    { id: 0, name: "El Loco", image: "images/major/01-el-loco.jpg" },
+    { id: 0, name: "El Loco", image: "images/major/00-el-loco.jpg" },
     { id: 1, name: "El Mago", image: "images/major/01-el-mago.jpg" },
     { id: 2, name: "La Sacerdotisa", image: "images/major/02-la-sacerdotisa.jpg" },
     { id: 3, name: "La Emperatriz", image: "images/major/03-la-emperatriz.jpg" },
@@ -26,7 +27,7 @@ const MAJOR_ARCANA = [
     { id: 21, name: "El Mundo", image: "images/major/21-el-mundo.jpg" }
 ];
 
-// Arcanos Menores (56 cartas) - 4 palos de 14 cartas cada uno
+// Arcanos Menores completos (56 cartas) - 4 palos de 14 cartas cada uno
 const MINOR_ARCANA = {
     // COPAS (14 cartas)
     cups: [
@@ -101,6 +102,7 @@ const MINOR_ARCANA = {
     ]
 };
 
+// Base de datos de cartas con significados completos
 const tarotDeck = [
     // Arcanos Mayores
     { name: "El Loco", meaning: "Nuevos comienzos, espontaneidad, fe en el futuro. Representa la aventura y la confianza en lo desconocido. Es momento de dar un salto de fe hacia nuevas experiencias." },
@@ -214,25 +216,25 @@ const interpretations = [
     "Esta combinación de cartas habla de sanación profunda y renovación. Viejas heridas encuentran su medicina, y nuevas posibilidades emergen como flores después de la lluvia. Tu fuerza interior es más poderosa de lo que imaginas."
 ];
 
-
 let currentSlogan = 0;
 let cardsRevealed = false;
 let selectedCards = [];
 
-// 
+// Inicialización después de cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         createSparkles();
         showSlogans();
-    }, 4500); // 
+        createStars();
+    }, 4500);
 });
 
-//  partículas brillantes
+// Crear partículas brillantes
 function createSparkles() {
     const sparklesContainer = document.getElementById('sparkles');
     
     setInterval(() => {
-        if (sparklesContainer.children.length < 50) { // Limitar número de partículas
+        if (sparklesContainer.children.length < 30) {
             const sparkle = document.createElement('div');
             sparkle.className = 'sparkle';
             sparkle.style.left = Math.random() * 100 + '%';
@@ -246,10 +248,10 @@ function createSparkles() {
                 }
             }, 5000);
         }
-    }, 200);
+    }, 300);
 }
 
-// Animacion txt
+// Animación de texto letra por letra
 function animateText(text, element) {
     element.innerHTML = '';
     const letters = text.split('');
@@ -263,7 +265,7 @@ function animateText(text, element) {
     });
 }
 
-// logans rotativos
+// Mostrar slogans rotativos
 function showSlogans() {
     const sloganElement = document.getElementById('slogan');
     
@@ -277,22 +279,17 @@ function showSlogans() {
         }, 600);
     }
     
-    // Mostrar el primer slogan
     showNextSlogan();
-    
-    // slogan cada 5'
     setInterval(showNextSlogan, 5000);
 }
 
-// Revelar cartas 
+// Función principal para revelar cartas
 function revealCards() {
     if (cardsRevealed) {
-        // repeticion-solución
         resetCards();
         return;
     }
     
-    // Deshabilitar el botón temporalmente
     const button = document.querySelector('.reveal-button');
     button.disabled = true;
     button.textContent = '🔮 Consultando los Arcanos... 🔮';
@@ -300,34 +297,28 @@ function revealCards() {
     cardsRevealed = true;
     selectedCards = getRandomCards(3);
     
-    // Pequeña pausa para crear suspense
     setTimeout(() => {
         for (let i = 1; i <= 3; i++) {
             const card = document.getElementById(`card${i}`);
             const cardData = selectedCards[i - 1];
             
-            // Llenar contenido de la carta
             document.getElementById(`cardName${i}`).textContent = cardData.name;
             document.getElementById(`cardMeaning${i}`).textContent = cardData.meaning;
             
-            // Animar volteo con delay progresivo
             setTimeout(() => {
                 card.classList.add('flipped');
                 
-                // Efecto de sonido visual (cambio de brillo)
                 card.style.filter = 'brightness(1.3)';
                 setTimeout(() => {
                     card.style.filter = 'brightness(1)';
                 }, 300);
                 
-            }, i * 400); // 400ms entre cada carta
+            }, i * 400);
         }
         
-        // Mostrar interpretación 
         setTimeout(() => {
             showInterpretation(selectedCards);
             
-            // Rehabilitar el botón txt
             button.disabled = false;
             button.textContent = '🔮 Nueva Consulta 🔮';
         }, 1500);
@@ -335,26 +326,19 @@ function revealCards() {
     }, 800);
 }
 
-// Resetear cartas 
+// Resetear cartas para nueva consulta
 function resetCards() {
     cardsRevealed = false;
     const button = document.querySelector('.reveal-button');
     button.textContent = '🔮 Descubre tu Augur 🔮';
     
-    // Ocultar interpretación
     const interpretation = document.getElementById('interpretation');
     interpretation.classList.remove('show');
     
-    // Voltear cartas
     for (let i = 1; i <= 3; i++) {
         const card = document.getElementById(`card${i}`);
         card.classList.remove('flipped');
     }
-    
-    // Pequeña pausa 
-    setTimeout(() => {
-        // nueva consulta
-    }, 800);
 }
 
 // Obtener cartas aleatorias sin repetición
@@ -363,15 +347,13 @@ function getRandomCards(count) {
     return shuffled.slice(0, count);
 }
 
-// Mostrar interpretación
+// Mostrar interpretación personalizada
 function showInterpretation(cards) {
     const interpretation = document.getElementById('interpretation');
     const interpretationText = document.getElementById('interpretationText');
     
-    // Sel interpretación aleatoria
     const randomInterpretation = interpretations[Math.floor(Math.random() * interpretations.length)];
     
-    // interpretación
     const cardNames = cards.map(card => card.name).join(', ');
     const personalizedText = `
         <div style="margin-bottom: 20px;">
@@ -380,7 +362,7 @@ function showInterpretation(cards) {
         <div style="line-height: 1.7; text-align: justify;">
             ${randomInterpretation}
         </div>
-        <div style="margin-top: 25px; padding: 20px; background: rgba(212,175,55,0.1); border-radius: 15px; border-left: 4px solid #d4af37;">
+        <div style="margin-top: 25px; padding: 20px; background: rgba(201,169,221,0.1); border-radius: 15px; border-left: 4px solid #a688b5;">
             <strong>Consejo de los Arcanos:</strong> Las cartas que han aparecido en tu camino no son casualidad. 
             Cada símbolo, cada mensaje, resuena con las vibraciones de tu alma en este momento. 
             Medita sobre estas revelaciones y permite que su sabiduría guíe tus próximos pasos.
@@ -389,13 +371,34 @@ function showInterpretation(cards) {
     
     interpretationText.innerHTML = personalizedText;
     
-    // Mostrar 
     setTimeout(() => {
         interpretation.classList.add('show');
     }, 200);
 }
 
-//  efectos de hover cartas
+// Crear estrellas en el footer
+function createStars() {
+    const starContainer = document.getElementById('starryBackground');
+    const starCount = 30;
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 70 + '%';
+        
+        const size = Math.random() * 3 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        
+        star.style.animationDelay = Math.random() * 3 + 's';
+        
+        starContainer.appendChild(star);
+    }
+}
+
+// Efectos de hover en las cartas
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.tarot-card');
     
@@ -403,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('mouseenter', function() {
             if (!this.classList.contains('flipped')) {
                 this.style.transform = 'translateY(-15px) rotateY(5deg) scale(1.05)';
-                this.style.boxShadow = '0 20px 50px rgba(212,175,55,0.3)';
+                this.style.boxShadow = '0 20px 50px rgba(201,169,221,0.4)';
             }
         });
         
@@ -416,19 +419,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-//  partículas en el botón
+// Efectos de partículas en el botón
 document.addEventListener('DOMContentLoaded', function() {
     const button = document.querySelector('.reveal-button');
     
     button.addEventListener('mouseenter', function() {
-        // partículas doradas 
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 6; i++) {
             setTimeout(() => {
                 const particle = document.createElement('div');
                 particle.style.position = 'absolute';
                 particle.style.width = '4px';
                 particle.style.height = '4px';
-                particle.style.background = '#d4af37';
+                particle.style.background = '#c9a9dd';
                 particle.style.borderRadius = '50%';
                 particle.style.pointerEvents = 'none';
                 particle.style.zIndex = '9999';
@@ -439,7 +441,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 document.body.appendChild(particle);
                 
-                // Animar partícula
                 let opacity = 1;
                 let y = 0;
                 const animate = setInterval(() => {
@@ -458,92 +459,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-// estrellas 
-        function createStars() {
-            const starContainer = document.getElementById('starryBackground');
-            const starCount = 50;
 
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Posición aleatoria
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 70 + '%';
-                
-                // Tamaño aleatorio
-                const size = Math.random() * 3 + 1;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                
-                // Retraso aleatorio
-                star.style.animationDelay = Math.random() * 3 + 's';
-                
-                starContainer.appendChild(star);
-            }
-        }
+// FUNCIONES AVANZADAS PARA MANEJO DE IMÁGENES
 
-        // pasto 
-        function createGrass() {
-            const grassContainer = document.getElementById('grassContainer');
-            const grassCount = 30;
-
-            for (let i = 0; i < grassCount; i++) {
-                const blade = document.createElement('div');
-                blade.className = 'grass-blade';
-                
-                // Posición 
-                blade.style.left = Math.random() * 100 + '%';
-                
-                // Altura 
-                const height = Math.random() * 20 + 10;
-                blade.style.height = height + 'px';
-                
-                // Retraso aleatorio
-                blade.style.animationDelay = (Math.random() * 2 + 1.5) + 's';
-                
-                grassContainer.appendChild(blade);
-            }
-        }
-
-        //
-        document.addEventListener('DOMContentLoaded', function() {
-            createStars();
-            createGrass();
-        });
-        // FUNCIONES IMÁGENES 
-function createCardHTML(cardData, index) {
-    return `
-        <div class="card" data-card-id="${cardData.id}" onclick="flipCard(this, ${index})">
-            <div class="card-inner">
-                <div class="card-back">
-                    <img src="${CARD_BACK_IMAGE}" alt="Reverso de carta">
-                </div>
-                <div class="card-front">
-                    <img src="${cardData.image}" alt="${cardData.name}">
-                    <div class="card-name">${cardData.name}</div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function getRandomCards(numCards = 3) {
-    const shuffled = [...MAJOR_ARCANA].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, numCards);
-}
-
-function generateCardsWithImages() {
-    const selectedCards = getRandomCards(3);
-    const container = document.querySelector('.cardsContainer'); // HTML
-    
-    if (container) {
-        container.innerHTML = selectedCards
-            .map((card, index) => createCardHTML(card, index))
-            .join('');
-    }
-}
-// 
+// Función para obtener todas las cartas (Mayores + Menores)
 function getAllCards() {
     const allCards = [...MAJOR_ARCANA];
     
@@ -555,8 +474,7 @@ function getAllCards() {
     return allCards; // Total: 78 cartas
 }
 
-
-
+// Función para crear HTML de carta con imagen
 function createCardHTML(cardData, index) {
     return `
         <div class="card" data-card-id="${cardData.id || cardData.name}" onclick="flipCard(this, ${index})">
@@ -564,7 +482,7 @@ function createCardHTML(cardData, index) {
                 <!-- REVERSO DE LA CARTA -->
                 <div class="card-back">
                     <img src="${CARD_BACK_IMAGE}" alt="Reverso de carta" onerror="this.style.display='none'">
-                    <div class="card-pattern"></div>
+                    <div class="card-pattern">🔮<br>TAROT</div>
                 </div>
                 
                 <!-- FRENTE DE LA CARTA -->
@@ -577,26 +495,24 @@ function createCardHTML(cardData, index) {
     `;
 }
 
-// 4ERRORES DE IMÁGENES
-// ============================================
+// Manejo de errores de imágenes
 function handleImageError(img) {
     // Si la imagen no carga, mostrar placeholder
     img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg==';
+    img.style.objectFit = 'contain';
 }
 
-//  BARAJAR 
-// =============================================
+// Función para barajar y seleccionar cartas
 function shuffleAndSelectCards(numCards = 3) {
     const allCards = getAllCards();
     const shuffled = [...allCards].sort(() => Math.random() - 0.5);
     return shuffled.slice(0, numCards);
 }
 
-
-// ============================================
+// Función para generar spread completo (si quieres usar imágenes)
 function generateSpread() {
-    const selectedCards = shuffleAndSelectCards(3); // 
-    const spreadContainer = document.getElementById('.cardsContainer'); //HTML
+    const selectedCards = shuffleAndSelectCards(3);
+    const spreadContainer = document.querySelector('.cards-container');
     
     if (spreadContainer) {
         spreadContainer.innerHTML = selectedCards
@@ -605,22 +521,59 @@ function generateSpread() {
     }
 }
 
-//  (ANIMACIÓN DE FLIP)
-// ==================================================
+// Función para voltear carta (animación de flip)
 function flipCard(cardElement, cardIndex) {
     if (cardElement.classList.contains('flipped')) return;
     
     cardElement.classList.add('flipped');
     
-    
-     const flipSound = new Audio('sounds/card-flip.mp3');
-     flipSound.play().catch(() => {});
+    // Opcional: agregar sonido de carta
+    // const flipSound = new Audio('sounds/card-flip.mp3');
+    // flipSound.play().catch(() => {});
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Cargar las cartas al iniciar la página
-    generateSpread();
-});
+// Funciones de utilidad para debugging
+function logCardData() {
+    console.log('Total Arcanos Mayores:', MAJOR_ARCANA.length);
+    console.log('Total Arcanos Menores:', Object.values(MINOR_ARCANA).reduce((acc, suit) => acc + suit.length, 0));
+    console.log('Total cartas:', getAllCards().length);
+}
 
+// Función para precargar imágenes (opcional, para mejorar rendimiento)
+function preloadImages() {
+    const allCards = getAllCards();
+    const imagePromises = [];
+    
+    allCards.forEach(card => {
+        if (card.image) {
+            const img = new Image();
+            img.src = card.image;
+            imagePromises.push(
+                new Promise(resolve => {
+                    img.onload = resolve;
+                    img.onerror = resolve; // Continuar aunque falle
+                })
+            );
+        }
+    });
+    
+    return Promise.all(imagePromises);
+}
 
-generateCardsWithImages();
+// Función para validar estructura de imágenes
+function validateImageStructure() {
+    const allCards = getAllCards();
+    const missingImages = [];
+    
+    allCards.forEach(card => {
+        if (!card.image || card.image === '') {
+            missingImages.push(card.name);
+        }
+    });
+    
+    if (missingImages.length > 0) {
+        console.warn('Cartas sin imagen definida:', missingImages);
+    }
+    
+    return missingImages.length === 0;
+}
