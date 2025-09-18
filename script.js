@@ -3,28 +3,28 @@ const CARD_BACK_IMAGE = "https://i.pinimg.com/736x/7b/bd/32/7bbd32bb2cdfd281bc0b
 
 // Arcanos Mayores completos (22 cartas)
 const MAJOR_ARCANA = [
-    { id: 0, name: "El Loco", image: "images/major/00-el-loco.jpeg" },
-    { id: 1, name: "El Mago", image: "images/major/01-el-mago.jpeg" },
-    { id: 2, name: "La Sacerdotisa", image: "images/major/02-la-sacerdotisa.jpeg" },
-    { id: 3, name: "La Emperatriz", image: "images/major/03-la-emperatriz.jpeg" },
-    { id: 4, name: "El Emperador", image: "images/major/04-el-emperador.jpeg" },
-    { id: 5, name: "El Hierofante", image: "images/major/05-el-hierofante.jpeg" },
-    { id: 6, name: "Los Enamorados", image: "images/major/06-los-enamorados.jpeg" },
-    { id: 7, name: "El Carro", image: "images/major/07-el-carro.jpeg" },
-    { id: 8, name: "La Justicia", image: "images/major/08-la-justicia.jpg" },
-    { id: 9, name: "El Ermitaño", image: "images/major/09-el-ermitano.jpg" },
-    { id: 10, name: "La Rueda de la Fortuna", image: "images/major/10-la-rueda.jpg" },
-    { id: 11, name: "La Fuerza", image: "images/major/11-la-fuerza.jpg" },
-    { id: 12, name: "El Colgado", image: "images/major/12-el-colgado.jpg" },
-    { id: 13, name: "La Muerte", image: "images/major/13-la-muerte.jpg" },
-    { id: 14, name: "La Templanza", image: "images/major/14-la-templanza.jpg" },
-    { id: 15, name: "El Diablo", image: "images/major/15-el-diablo.jpg" },
-    { id: 16, name: "La Torre", image: "images/major/16-la-torre.jpg" },
-    { id: 17, name: "La Estrella", image: "images/major/17-la-estrella.jpg" },
-    { id: 18, name: "La Luna", image: "images/major/18-la-luna.jpg" },
-    { id: 19, name: "El Sol", image: "images/major/19-el-sol.jpg" },
-    { id: 20, name: "El Juicio", image: "images/major/20-el-juicio.jpg" },
-    { id: 21, name: "El Mundo", image: "images/major/21-el-mundo.jpg" }
+    { id: 0, name: "El Loco", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/547283686_122119298774976958_6945129878280237965_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=nVuijFAG9FgQ7kNvwHj1dDo&_nc_oc=Adk3kKGaXAxcF8qfBZgcpR4xfRrMmmaME5Ji7P4VKK2dKD46_kWqRNN8pyrxpWd-D7Q&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=kfujNJL-IWXEcDFQTPqGZQ&oh=00_AfYzOdxui-fGx5VCtgcgnBKHF53VjO5B2fevjDUfpwR_yQ&oe=68D2554D" },
+    { id: 1, name: "El Mago", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548729924_122119298768976958_2799435252202917317_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NJ8vWCaNG24Q7kNvwGggl3u&_nc_oc=Adl5P0xtL7Z4RIUZ5vDu1_Re3426USrwax6VrWIxrDyMXbnm5AGdsG0I3CJ3YlQSKhA&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=a1mB5yqtaRWXmb_6bRrTAQ&oh=00_AfbS8AzML5zVG_GzyVWjwO4XbpJYMPedUxbymllaJ1lhoQ&oe=68D23E16" },
+    { id: 2, name: "La Sacerdotisa", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548729924_122119298768976958_2799435252202917317_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NJ8vWCaNG24Q7kNvwGggl3u&_nc_oc=Adl5P0xtL7Z4RIUZ5vDu1_Re3426USrwax6VrWIxrDyMXbnm5AGdsG0I3CJ3YlQSKhA&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=a1mB5yqtaRWXmb_6bRrTAQ&oh=00_AfbS8AzML5zVG_GzyVWjwO4XbpJYMPedUxbymllaJ1lhoQ&oe=68D23E16" },
+    { id: 3, name: "La Emperatriz", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548972289_122119298870976958_4568982135133291467_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=f727a1&_nc_ohc=BT9hzJXhF9cQ7kNvwHMDrSs&_nc_oc=Admy1W4OrFjICr4LNaQKKmb7PpiNzgOdZbf-1vudK1I6W9dJjt0Z2xTwIE0nNvMhaNQ&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=CGzmQDQQe_7JvqiNUBA8Cw&oh=00_Afbpelofzww7yudMfUk_Mx61vY2nv4wElPvBOdE4YbV-1A&oe=68D24369" },
+    { id: 4, name: "El Emperador", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548268514_122119298918976958_1692589966413681241_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Afu4bZxvorsQ7kNvwHfohNo&_nc_oc=AdlwqopkNCHVB2MEwiW7LpfsHRz3bN_4dd6W_fMKFaukvbqOG3iXyFRl6qxhLUjYGUo&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=AdtXb9enh-3y-HQw_Jf7cA&oh=00_AfbgFViIEhYLnIDhdN53OFUf1aC_pYJe9ZJS2jeFq5lIYg&oe=68D240A2" },
+    { id: 5, name: "El Hierofante", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549632315_122119298936976958_8169134102249563105_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_ohc=gbgk1puiBysQ7kNvwH1KPRt&_nc_oc=Adm-1gacnyPfT5qp9yCJtj4gkPh4GWLyajlqbwUNtjKvvCpe8bIzEQt7YjKIB_20ITQ&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=svoOWqdMoFdhzpBHrhaYNg&oh=00_AfaM3azSevktxv7Xf9x9h_zvCFBmgwSpyfINYX9Rz83kAA&oe=68D249CF" },
+    { id: 6, name: "Los Enamorados", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549428970_122119299026976958_5856368252061708670_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ENryVMtcy2gQ7kNvwHomqLg&_nc_oc=AdmZro-FOGrZ77a9-6pqaZN_ohQrq83e-GzYc6c0CwiO4xlSfUyb86aY2oefV4_4x-4&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=0Zhp4jLF1Wo_UBQrbajYgg&oh=00_AfakOKVBAxb0Ut1xeOBU9ZKLtv6VVTl0qJNoEK4x_wRU0A&oe=68D25958" },
+    { id: 7, name: "El Carro", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/548208077_122119299068976958_472798495462170267_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=f727a1&_nc_ohc=7T_MDKslsjMQ7kNvwGZvkiK&_nc_oc=Adm79z0-OsCTian5QQSi3BtQ9yETsgFt1bonf-_NgCRN87aZ6dFEmcWOvEsgtAspWEU&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=QVRM1XH2Tv2yFrXhJszNCg&oh=00_AfYYlP3U0WKnXZsxMCOIjGzmURBSy0_DZYnossFfILLzTQ&oe=68D24652" },
+    { id: 8, name: "La Justicia", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548647662_122119299110976958_7760552919969647232_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=f727a1&_nc_ohc=-i_8_mp8x90Q7kNvwH8hi2C&_nc_oc=AdmAt1-cDs8HDenbP-6QOZAIH_VDFx_aDx5AzU-7U-ZxxTdIdgBTStyX-NzVoAiO6Sc&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=IdC5rANcPw1HN5kCSTACTg&oh=00_AfaLMvy9SXTPcb7oi0eBLuybwfVhx_98mMCJY00UAvFKfw&oe=68D240C3" },
+    { id: 9, name: "El Ermitaño", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/548218297_122119299176976958_1112744483784503219_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=f727a1&_nc_ohc=TwfY37y_1EcQ7kNvwEkZwYT&_nc_oc=AdnHgUyt5jBFw7PXnTLvZz1yqxk2vlJFE_qZC6JaxNeJgkJEp_4gcbuseOqRnEXQlJ4&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=-XEu4z5HsUhSHc6phwn-mw&oh=00_AfbFS0QFtXESGX3kCDttVnoavdiZzuB1GITpLDdzReOfug&oe=68D25252" },
+    { id: 10, name: "La Rueda de la Fortuna", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549579628_122119299242976958_11918633761196965_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NNuxmj6lioMQ7kNvwH7g189&_nc_oc=AdknSL4qww1K3uZ04gUIu-1K8FPubniJm-5O0hHGC64HHpXF3tl4YyeEDbmG8Elj_6o&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=MQDZoyor4U4-_SkfHlKeGg&oh=00_AfZQGwNBRMm-USRbDz7G2CeEZVTA_isI8HNEmL_7cAkGIA&oe=68D250BB" },
+    { id: 11, name: "La Fuerza", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/549782992_122119299266976958_1098305203783611393_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=f727a1&_nc_ohc=iP_4RkUXBmwQ7kNvwFXrfvK&_nc_oc=AdlYygkhPbr0g6dVQ6WlD9fPalnARmsBG1qKCC081VSEFWZK6Ebxxnj8zmbxvQycdm8&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=TsaUgWSu0AKLFKao6DBBOg&oh=00_AfaCT8Y8Tq-1wSzW7ZpDMjjt9IyuhH041-OxQk9e18fc4g&oe=68D231BF" },
+    { id: 12, name: "El Colgado", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548520675_122119299326976958_2112825812771301659_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=l4Gx8stB0AQQ7kNvwF3Efq6&_nc_oc=AdmgtRH4IeOQCQRZBjkjh0wuU3pTkEdoU6aoOsrCiROjamRBltqZy0-3_iY2Ln6O228&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=68VyfflduePi8AZXstblRg&oh=00_AfYYs34hA_bkQyIlE1kCvG0LJqzi4S_YiVPpwdU1rYEhBQ&oe=68D23084" },
+    { id: 13, name: "La Muerte", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/550095931_122119299398976958_2108202460918284621_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=kxjDofO7f0AQ7kNvwFrEbQh&_nc_oc=AdlVcq6DDC5GAASlrNkgCdNgdSmbK-PPhghl_bKvOQEHbIZcvD5_OA6XPj9nkoFxVFg&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=Kh-fMeiinsGOiFj7vUG-9A&oh=00_AfaXyPJvFBHh3pxHiwSerGttKnWNzm-DLJzBFG-Je6nrgQ&oe=68D248C2" },
+    { id: 14, name: "La Templanza", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548948050_122119299434976958_2202410659026413229_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=DAVU3DhZlqYQ7kNvwFHgSj_&_nc_oc=AdlZ0vkeBvELALYQ-ZW70PBTXdfT6OlO6EYJS_Hpy4WO4WhIe8hJuISWwPkvud1TJfI&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=9oHVT8DHqUVU6NncJjimTw&oh=00_AfaDPgqt1WZFal-YVHkwmMxiDiAogzaU7xBjBrlYp5bdvA&oe=68D24370" },
+    { id: 15, name: "El Diablo", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/548176879_122119299482976958_1638648437416235278_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ugBTW2u0rwwQ7kNvwFIlOcK&_nc_oc=AdmJeQxZvJEQ7iDPZ61O86ncIUUmNsKVytGV0K3rO3dvT_-J0SEY254aNsRlQM9Cogk&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=tFuGXDYYE3xdK7MAN02MuA&oh=00_AfYMHlqbN1nwaGxyg_fdBg9eYeYnGqgwbOXyCFqcez7ycA&oe=68D24B8E" },
+    { id: 16, name: "La Torre", image: "ihttps://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549542196_122119299554976958_5253624486455557269_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Wmt9RaJXsGYQ7kNvwGdevKb&_nc_oc=AdkPnoij3LJ8Fzl3x-HPDEsGr_5EvYwmBXEECWeGa-nQIbZnJDJPY0J1krhjpIQ_QKY&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=8KyahaCmYx-YkvMROp0fMA&oh=00_AfYGl5MmJkgCGBSAv7ZZGbMiwj93wilcPB5tFLU5PxRBNA&oe=68D2612E" },
+    { id: 17, name: "La Estrella", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/549970151_122119301366976958_2117190330297635409_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=f727a1&_nc_ohc=UlKaJIHqCk8Q7kNvwEYAuGf&_nc_oc=AdmTJIRHKbd_vJlMzugG6WwaQvJGhuY_eL6bTBBAg4zMOTWF2rKBmdDvYxT-40Abi0M&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=XMSv-vIRF1uPhl49p3ce2g&oh=00_AfbNIq_CQP3kmPTdGpxX2AtK87WrpmAx2g0g5pcPlWW8-g&oe=68D265F3" },
+    { id: 18, name: "La Luna", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548610255_122119301396976958_8368705850190163843_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_ohc=HCX6TYPXm9MQ7kNvwFkncIw&_nc_oc=AdnkjBL3Z4TmxkiTsMnX6Q-8YAZ6PCeMlzcBKhgAuoPp7w9u5EznH8LBkcQmGsTNOEY&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=_IJv0NQ5R93uoja4_WhVSA&oh=00_AfY3lRZmLAg5YwJoo1_MD-8biaDca5r8ZSA-12tz34fsFA&oe=68D246C9" },
+    { id: 19, name: "El Sol", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548267904_122119301444976958_7526877399635760399_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=iuhgETkl-kAQ7kNvwFDT4bH&_nc_oc=AdkHdKoaThKkxkKhBch5C7dPdsr3vY5tmlZxikfqa5G6bJQXzcKQVlIa0K1v5f7FZ-U&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=1emV6CNUbJa627wFxg_sQA&oh=00_AfY_4AGmhLWuIANNXBi-MlaJLoKuiqy3gkET0uIdMPJg2g&oe=68D2420F" },
+    { id: 20, name: "El Juicio", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549032510_122119301492976958_74733388741903718_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=FC1NOH8Pf50Q7kNvwG2lVCT&_nc_oc=AdlcaUKWtPeVZyiNkp1ghuHV5ma8Bo_hiuDevfMartEaHR4GJdSMg2Db9GTbZZWfyUk&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=3S8vYmw9_giDFxLe8AqBjg&oh=00_Afb0VyTRu7pI6i-hdyxWTY_2HWGxfnFHZ6yfDHWAezvmFg&oe=68D24BC7" },
+    { id: 21, name: "El Mundo", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549286620_122119301558976958_8136238780405164929_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_ohc=PeaaphWYaZgQ7kNvwE7hFdK&_nc_oc=AdnieLZrO_GNw0oHGm2iT7tKU1SEyY73eUvZEUVgxMEoYk2b4XXvVbPLcAlaq36Wzf8&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=dwDnohXTXbGcZRbC7fg42A&oh=00_AfbjCxG6FBBXlqy7Mpz98xTTGNE52xa7vBbYcrYhQEYSXQ&oe=68D253A9" }
 ];
 
 // Arcanos Menores completos (56 cartas) - 4 palos de 14 cartas cada uno
@@ -577,5 +577,6 @@ function validateImageStructure() {
     
     return missingImages.length === 0;
 }
+
 
 
