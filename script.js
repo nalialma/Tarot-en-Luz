@@ -1,407 +1,281 @@
-// URL de la imagen del reverso de las cartas
+ // URL de la imagen del reverso de las cartas
 const CARD_BACK_IMAGE = "https://i.pinimg.com/736x/7b/bd/32/7bbd32bb2cdfd281bc0b47a45f94779a.jpg";
 
 // Arcanos Mayores completos (22 cartas)
 const MAJOR_ARCANA = [
-    { id: 0, name: "El Loco", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/547283686_122119298774976958_6945129878280237965_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=nVuijFAG9FgQ7kNvwHj1dDo&_nc_oc=Adk3kKGaXAxcF8qfBZgcpR4xfRrMmmaME5Ji7P4VKK2dKD46_kWqRNN8pyrxpWd-D7Q&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=kfujNJL-IWXEcDFQTPqGZQ&oh=00_AfYzOdxui-fGx5VCtgcgnBKHF53VjO5B2fevjDUfpwR_yQ&oe=68D2554D" },
-    { id: 1, name: "El Mago", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548729924_122119298768976958_2799435252202917317_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NJ8vWCaNG24Q7kNvwGggl3u&_nc_oc=Adl5P0xtL7Z4RIUZ5vDu1_Re3426USrwax6VrWIxrDyMXbnm5AGdsG0I3CJ3YlQSKhA&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=a1mB5yqtaRWXmb_6bRrTAQ&oh=00_AfbS8AzML5zVG_GzyVWjwO4XbpJYMPedUxbymllaJ1lhoQ&oe=68D23E16" },
-    { id: 2, name: "La Sacerdotisa", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548729924_122119298768976958_2799435252202917317_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NJ8vWCaNG24Q7kNvwGggl3u&_nc_oc=Adl5P0xtL7Z4RIUZ5vDu1_Re3426USrwax6VrWIxrDyMXbnm5AGdsG0I3CJ3YlQSKhA&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=a1mB5yqtaRWXmb_6bRrTAQ&oh=00_AfbS8AzML5zVG_GzyVWjwO4XbpJYMPedUxbymllaJ1lhoQ&oe=68D23E16" },
-    { id: 3, name: "La Emperatriz", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548972289_122119298870976958_4568982135133291467_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=f727a1&_nc_ohc=BT9hzJXhF9cQ7kNvwHMDrSs&_nc_oc=Admy1W4OrFjICr4LNaQKKmb7PpiNzgOdZbf-1vudK1I6W9dJjt0Z2xTwIE0nNvMhaNQ&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=CGzmQDQQe_7JvqiNUBA8Cw&oh=00_Afbpelofzww7yudMfUk_Mx61vY2nv4wElPvBOdE4YbV-1A&oe=68D24369" },
-    { id: 4, name: "El Emperador", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548268514_122119298918976958_1692589966413681241_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Afu4bZxvorsQ7kNvwHfohNo&_nc_oc=AdlwqopkNCHVB2MEwiW7LpfsHRz3bN_4dd6W_fMKFaukvbqOG3iXyFRl6qxhLUjYGUo&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=AdtXb9enh-3y-HQw_Jf7cA&oh=00_AfbgFViIEhYLnIDhdN53OFUf1aC_pYJe9ZJS2jeFq5lIYg&oe=68D240A2" },
-    { id: 5, name: "El Hierofante", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549632315_122119298936976958_8169134102249563105_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_ohc=gbgk1puiBysQ7kNvwH1KPRt&_nc_oc=Adm-1gacnyPfT5qp9yCJtj4gkPh4GWLyajlqbwUNtjKvvCpe8bIzEQt7YjKIB_20ITQ&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=svoOWqdMoFdhzpBHrhaYNg&oh=00_AfaM3azSevktxv7Xf9x9h_zvCFBmgwSpyfINYX9Rz83kAA&oe=68D249CF" },
-    { id: 6, name: "Los Enamorados", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549428970_122119299026976958_5856368252061708670_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ENryVMtcy2gQ7kNvwHomqLg&_nc_oc=AdmZro-FOGrZ77a9-6pqaZN_ohQrq83e-GzYc6c0CwiO4xlSfUyb86aY2oefV4_4x-4&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=0Zhp4jLF1Wo_UBQrbajYgg&oh=00_AfakOKVBAxb0Ut1xeOBU9ZKLtv6VVTl0qJNoEK4x_wRU0A&oe=68D25958" },
-    { id: 7, name: "El Carro", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/548208077_122119299068976958_472798495462170267_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=f727a1&_nc_ohc=7T_MDKslsjMQ7kNvwGZvkiK&_nc_oc=Adm79z0-OsCTian5QQSi3BtQ9yETsgFt1bonf-_NgCRN87aZ6dFEmcWOvEsgtAspWEU&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=QVRM1XH2Tv2yFrXhJszNCg&oh=00_AfYYlP3U0WKnXZsxMCOIjGzmURBSy0_DZYnossFfILLzTQ&oe=68D24652" },
-    { id: 8, name: "La Justicia", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548647662_122119299110976958_7760552919969647232_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=f727a1&_nc_ohc=-i_8_mp8x90Q7kNvwH8hi2C&_nc_oc=AdmAt1-cDs8HDenbP-6QOZAIH_VDFx_aDx5AzU-7U-ZxxTdIdgBTStyX-NzVoAiO6Sc&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=IdC5rANcPw1HN5kCSTACTg&oh=00_AfaLMvy9SXTPcb7oi0eBLuybwfVhx_98mMCJY00UAvFKfw&oe=68D240C3" },
-    { id: 9, name: "El Ermitaño", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/548218297_122119299176976958_1112744483784503219_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=f727a1&_nc_ohc=TwfY37y_1EcQ7kNvwEkZwYT&_nc_oc=AdnHgUyt5jBFw7PXnTLvZz1yqxk2vlJFE_qZC6JaxNeJgkJEp_4gcbuseOqRnEXQlJ4&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=-XEu4z5HsUhSHc6phwn-mw&oh=00_AfbFS0QFtXESGX3kCDttVnoavdiZzuB1GITpLDdzReOfug&oe=68D25252" },
-    { id: 10, name: "La Rueda de la Fortuna", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549579628_122119299242976958_11918633761196965_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NNuxmj6lioMQ7kNvwH7g189&_nc_oc=AdknSL4qww1K3uZ04gUIu-1K8FPubniJm-5O0hHGC64HHpXF3tl4YyeEDbmG8Elj_6o&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=MQDZoyor4U4-_SkfHlKeGg&oh=00_AfZQGwNBRMm-USRbDz7G2CeEZVTA_isI8HNEmL_7cAkGIA&oe=68D250BB" },
-    { id: 11, name: "La Fuerza", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/549782992_122119299266976958_1098305203783611393_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=f727a1&_nc_ohc=iP_4RkUXBmwQ7kNvwFXrfvK&_nc_oc=AdlYygkhPbr0g6dVQ6WlD9fPalnARmsBG1qKCC081VSEFWZK6Ebxxnj8zmbxvQycdm8&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=TsaUgWSu0AKLFKao6DBBOg&oh=00_AfaCT8Y8Tq-1wSzW7ZpDMjjt9IyuhH041-OxQk9e18fc4g&oe=68D231BF" },
-    { id: 12, name: "El Colgado", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548520675_122119299326976958_2112825812771301659_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=l4Gx8stB0AQQ7kNvwF3Efq6&_nc_oc=AdmgtRH4IeOQCQRZBjkjh0wuU3pTkEdoU6aoOsrCiROjamRBltqZy0-3_iY2Ln6O228&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=68VyfflduePi8AZXstblRg&oh=00_AfYYs34hA_bkQyIlE1kCvG0LJqzi4S_YiVPpwdU1rYEhBQ&oe=68D23084" },
-    { id: 13, name: "La Muerte", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/550095931_122119299398976958_2108202460918284621_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=kxjDofO7f0AQ7kNvwFrEbQh&_nc_oc=AdlVcq6DDC5GAASlrNkgCdNgdSmbK-PPhghl_bKvOQEHbIZcvD5_OA6XPj9nkoFxVFg&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=Kh-fMeiinsGOiFj7vUG-9A&oh=00_AfaXyPJvFBHh3pxHiwSerGttKnWNzm-DLJzBFG-Je6nrgQ&oe=68D248C2" },
-    { id: 14, name: "La Templanza", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548948050_122119299434976958_2202410659026413229_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=DAVU3DhZlqYQ7kNvwFHgSj_&_nc_oc=AdlZ0vkeBvELALYQ-ZW70PBTXdfT6OlO6EYJS_Hpy4WO4WhIe8hJuISWwPkvud1TJfI&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=9oHVT8DHqUVU6NncJjimTw&oh=00_AfaDPgqt1WZFal-YVHkwmMxiDiAogzaU7xBjBrlYp5bdvA&oe=68D24370" },
-    { id: 15, name: "El Diablo", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/548176879_122119299482976958_1638648437416235278_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ugBTW2u0rwwQ7kNvwFIlOcK&_nc_oc=AdmJeQxZvJEQ7iDPZ61O86ncIUUmNsKVytGV0K3rO3dvT_-J0SEY254aNsRlQM9Cogk&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=tFuGXDYYE3xdK7MAN02MuA&oh=00_AfYMHlqbN1nwaGxyg_fdBg9eYeYnGqgwbOXyCFqcez7ycA&oe=68D24B8E" },
-    { id: 16, name: "La Torre", image: "ihttps://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549542196_122119299554976958_5253624486455557269_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Wmt9RaJXsGYQ7kNvwGdevKb&_nc_oc=AdkPnoij3LJ8Fzl3x-HPDEsGr_5EvYwmBXEECWeGa-nQIbZnJDJPY0J1krhjpIQ_QKY&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=8KyahaCmYx-YkvMROp0fMA&oh=00_AfYGl5MmJkgCGBSAv7ZZGbMiwj93wilcPB5tFLU5PxRBNA&oe=68D2612E" },
-    { id: 17, name: "La Estrella", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/549970151_122119301366976958_2117190330297635409_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=f727a1&_nc_ohc=UlKaJIHqCk8Q7kNvwEYAuGf&_nc_oc=AdmTJIRHKbd_vJlMzugG6WwaQvJGhuY_eL6bTBBAg4zMOTWF2rKBmdDvYxT-40Abi0M&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=XMSv-vIRF1uPhl49p3ce2g&oh=00_AfbNIq_CQP3kmPTdGpxX2AtK87WrpmAx2g0g5pcPlWW8-g&oe=68D265F3" },
-    { id: 18, name: "La Luna", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548610255_122119301396976958_8368705850190163843_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_ohc=HCX6TYPXm9MQ7kNvwFkncIw&_nc_oc=AdnkjBL3Z4TmxkiTsMnX6Q-8YAZ6PCeMlzcBKhgAuoPp7w9u5EznH8LBkcQmGsTNOEY&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=_IJv0NQ5R93uoja4_WhVSA&oh=00_AfY3lRZmLAg5YwJoo1_MD-8biaDca5r8ZSA-12tz34fsFA&oe=68D246C9" },
-    { id: 19, name: "El Sol", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548267904_122119301444976958_7526877399635760399_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=iuhgETkl-kAQ7kNvwFDT4bH&_nc_oc=AdkHdKoaThKkxkKhBch5C7dPdsr3vY5tmlZxikfqa5G6bJQXzcKQVlIa0K1v5f7FZ-U&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=1emV6CNUbJa627wFxg_sQA&oh=00_AfY_4AGmhLWuIANNXBi-MlaJLoKuiqy3gkET0uIdMPJg2g&oe=68D2420F" },
-    { id: 20, name: "El Juicio", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549032510_122119301492976958_74733388741903718_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=FC1NOH8Pf50Q7kNvwG2lVCT&_nc_oc=AdlcaUKWtPeVZyiNkp1ghuHV5ma8Bo_hiuDevfMartEaHR4GJdSMg2Db9GTbZZWfyUk&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=3S8vYmw9_giDFxLe8AqBjg&oh=00_Afb0VyTRu7pI6i-hdyxWTY_2HWGxfnFHZ6yfDHWAezvmFg&oe=68D24BC7" },
-    { id: 21, name: "El Mundo", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549286620_122119301558976958_8136238780405164929_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_ohc=PeaaphWYaZgQ7kNvwE7hFdK&_nc_oc=AdnieLZrO_GNw0oHGm2iT7tKU1SEyY73eUvZEUVgxMEoYk2b4XXvVbPLcAlaq36Wzf8&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=dwDnohXTXbGcZRbC7fg42A&oh=00_AfbjCxG6FBBXlqy7Mpz98xTTGNE52xa7vBbYcrYhQEYSXQ&oe=68D253A9" }
+    { id: 0, name: "El Loco", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/547283686_122119298774976958_6945129878280237965_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=nVuijFAG9FgQ7kNvwHj1dDo&_nc_oc=Adk3kKGaXAxcF8qfBZgcpR4xfRrMmmaME5Ji7P4VKK2dKD46_kWqRNN8pyrxpWd-D7Q&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=yqcxbO5AZ77MEvxPwH4zKA&oh=00_AfaN7B7upErew83lIAtqwl4uW81hZRP2m0lFz_DYJIHaPQ&oe=68D3A6CD" },
+    { id: 1, name: "El Mago", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548729924_122119298768976958_2799435252202917317_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NJ8vWCaNG24Q7kNvwGggl3u&_nc_oc=Adl5P0xtL7Z4RIUZ5vDu1_Re3426USrwax6VrWIxrDyMXbnm5AGdsG0I3CJ3YlQSKhA&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=ENfVUCIA3LNn_2ZW8M3bcg&oh=00_Afb2OesFMu1Yzy5FbMPRQMoKW6KT98ZA5_zqZ4gWbIIfwg&oe=68D38F96" },
+    { id: 2, name: "La Sacerdotisa", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548743880_122119298762976958_2626695911397484806_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ggUN4hoJAiwQ7kNvwHtDYm_&_nc_oc=AdletnUkPSAzE5MKcjZn9fcXMeNiql5eI66gZiq5plRAjSqmO0iDuSSDQXfV4C2qwh4&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=V-09M9hgOOvSJjimYC55Sw&oh=00_AfZKWU2Os0nt0DfHJ5Y2OGg-G5bcWD5F8ry0sm6dcwroww&oe=68D3AB0F" },
+    { id: 3, name: "La Emperatriz", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548972289_122119298870976958_4568982135133291467_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=f727a1&_nc_ohc=zSDyCDAQnSMQ7kNvwHewVka&_nc_oc=AdnW2b8F162nQfd2xtZNB8HokyRTAK7pwKVipwFx1wBZFVc42Ava11BCddvHdrZWuK8&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=1a00wUiV3SNTEnxkDbSVDA&oh=00_Afb2qRnr8MIlSiAr6PBhr7IBwJ1vwH5FrK_26NXAbJP7XA&oe=68D394E9" },
+    { id: 4, name: "El Emperador", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548268514_122119298918976958_1692589966413681241_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Afu4bZxvorsQ7kNvwHfohNo&_nc_oc=AdlwqopkNCHVB2MEwiW7LpfsHRz3bN_4dd6W_fMKFaukvbqOG3iXyFRl6qxhLUjYGUo&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=549xpYxq-0GAXthj-CNmMw&oh=00_Afa0STbqac4LNlpOEDfULfJtSIjZZW3gpu9RpjGnvh34FA&oe=68D39222" },
+    { id: 5, name: "El Hierofante", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549632315_122119298936976958_8169134102249563105_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_ohc=tHbxmQqtnicQ7kNvwFJ8_l-&_nc_oc=AdlW9AL-MHztyndRRrav0SBJd8IVfjQjbaX2flXn8YC_TmDY2fYOjG-Isl0pNUcbpVU&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=toYaiZTQ0aYyPRP_ReRYCw&oh=00_AfZGvexXtwYPidSDggpJq0vRX_UNuR-WZjFb1MTux0eGLg&oe=68D39B4F" },
+    { id: 6, name: "Los Enamorados", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549428970_122119299026976958_5856368252061708670_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ENryVMtcy2gQ7kNvwHomqLg&_nc_oc=AdmZro-FOGrZ77a9-6pqaZN_ohQrq83e-GzYc6c0CwiO4xlSfUyb86aY2oefV4_4x-4&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=fICQiGMQhqCaB3tPDv42oA&oh=00_AfZWCnu2nUttPA796mg39C8KCGtELxPfebj5SXaoz5zSZQ&oe=68D3AAD8" },
+    { id: 7, name: "El Carro", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/548208077_122119299068976958_472798495462170267_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=f727a1&_nc_ohc=7T_MDKslsjMQ7kNvwGZvkiK&_nc_oc=Adm79z0-OsCTian5QQSi3BtQ9yETsgFt1bonf-_NgCRN87aZ6dFEmcWOvEsgtAspWEU&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=2ss328DvEGiPkDGPhlSA0Q&oh=00_AfYMNZF1AvgzuLW83nc19zBNEsU3eUtVPG5OhNwc3J4nUQ&oe=68D397D2" },
+    { id: 8, name: "La Justicia", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548647662_122119299110976958_7760552919969647232_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=f727a1&_nc_ohc=-8__sIFblssQ7kNvwEMCQfx&_nc_oc=AdlI0k_pLNxwP-y12Y6uRZD2RlVcXR17ydP69Q9Vfr4gzAH5DId_vkkf31tbOqGOAgA&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=v_9tk93JWI4DgtUQNSx7ig&oh=00_AfbvuhPCGFaxZhcgLUudAbqunhTXjLuVAa12rPFCSU4-cQ&oe=68D39243" },
+    { id: 9, name: "El Ermitaño", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/548218297_122119299176976958_1112744483784503219_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=f727a1&_nc_ohc=TwfY37y_1EcQ7kNvwEkZwYT&_nc_oc=AdnHgUyt5jBFw7PXnTLvZz1yqxk2vlJFE_qZC6JaxNeJgkJEp_4gcbuseOqRnEXQlJ4&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=qm9fN_edI4Ey76l4ManJVw&oh=00_AfZDtUh30no8GmKuEZvptMRM8vySNXMtQ135Jzh0sZOadQ&oe=68D3A3D2" },
+    { id: 10, name: "La Rueda de la Fortuna", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549579628_122119299242976958_11918633761196965_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NNuxmj6lioMQ7kNvwH7g189&_nc_oc=AdknSL4qww1K3uZ04gUIu-1K8FPubniJm-5O0hHGC64HHpXF3tl4YyeEDbmG8Elj_6o&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=hM9lnhd8rVp8LouyzjVXYg&oh=00_AfY2csWrRtJZMU2PlW8vX5iNcGxrSf61tFl2sRqRBUwpCw&oe=68D3A23B" },
+    { id: 11, name: "La Fuerza", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/549782992_122119299266976958_1098305203783611393_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=f727a1&_nc_ohc=iP_4RkUXBmwQ7kNvwFXrfvK&_nc_oc=AdlYygkhPbr0g6dVQ6WlD9fPalnARmsBG1qKCC081VSEFWZK6Ebxxnj8zmbxvQycdm8&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=J6vVZTKSpVow4CYUWsIhqQ&oh=00_AfZskFVXZ9kduJ8nG_doLesdcAf2xrGpqa1_4cX8aflPHw&oe=68D3833F" },
+    { id: 12, name: "El Colgado", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548520675_122119299326976958_2112825812771301659_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=-beLPrFdPN4Q7kNvwEOxFyd&_nc_oc=AdloWFv50tLQMPO5GS0CZzVcPaO4d8_E6W3O1DRHtc_BSPVgZ9BuEaD3k-PliRfPKmU&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=Y9N3kBEo6SY-iPeXLoRllA&oh=00_AfZIXHvv4I4lLkI_N0eGdATh1VdYagmpJXnU939XGlFwzA&oe=68D38204" },
+    { id: 13, name: "La Muerte", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/550095931_122119299398976958_2108202460918284621_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=kxjDofO7f0AQ7kNvwFrEbQh&_nc_oc=AdlVcq6DDC5GAASlrNkgCdNgdSmbK-PPhghl_bKvOQEHbIZcvD5_OA6XPj9nkoFxVFg&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=rRKA5A8fuzMFFVrYwklLDA&oh=00_AfatXx7fNY5Ahet8ChwnyBJm3Oibrdu7woJSuQO5wQU6Ow&oe=68D39A42" },
+    { id: 14, name: "La Templanza", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548948050_122119299434976958_2202410659026413229_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=DAVU3DhZlqYQ7kNvwFHgSj_&_nc_oc=AdlZ0vkeBvELALYQ-ZW70PBTXdfT6OlO6EYJS_Hpy4WO4WhIe8hJuISWwPkvud1TJfI&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=5LeBw-jvKiiIqPrp6XgtBQ&oh=00_AfaL8D_GDkL-LGY-bOPw-LDfsVfopbpkbed74F1FK01NcA&oe=68D394F0" },
+    { id: 15, name: "El Diablo", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/548176879_122119299482976958_1638648437416235278_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ugBTW2u0rwwQ7kNvwFIlOcK&_nc_oc=AdmJeQxZvJEQ7iDPZ61O86ncIUUmNsKVytGV0K3rO3dvT_-J0SEY254aNsRlQM9Cogk&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=k-p9qWjaI8JfM4RYgQvlnQ&oh=00_Afa7xEfVFW-HkktA0IFV9AJPAMD1oed-W7kpYVGNfdzlTQ&oe=68D39D0E" },
+    { id: 16, name: "La Torre", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549542196_122119299554976958_5253624486455557269_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Wmt9RaJXsGYQ7kNvwGdevKb&_nc_oc=AdkPnoij3LJ8Fzl3x-HPDEsGr_5EvYwmBXEECWeGa-nQIbZnJDJPY0J1krhjpIQ_QKY&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=AmfFuYsQd2ZEaVwaqS8Cww&oh=00_AfZcFTFOTrY-9NKhXeJETuo7ZC3XB3MMWlVFR3itn_Fr9A&oe=68D3B2AE" },
+    { id: 17, name: "La Estrella", image: "https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/549970151_122119301366976958_2117190330297635409_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=f727a1&_nc_ohc=UlKaJIHqCk8Q7kNvwEYAuGf&_nc_oc=AdmTJIRHKbd_vJlMzugG6WwaQvJGhuY_eL6bTBBAg4zMOTWF2rKBmdDvYxT-40Abi0M&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=k2WWBfRjQzMqj6GD9KmRWA&oh=00_AfZo4yYh1kfHVAccZdYoqzBV1JM3mnxfGiqI2ZZdCU2MhA&oe=68D3B773" },
+    { id: 18, name: "La Luna", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548610255_122119301396976958_8368705850190163843_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_ohc=upFYBBCTWqgQ7kNvwGj3ALp&_nc_oc=AdkW5vU2FPje4k_b__pYYrmn0eDIdufrga6-G5j-9ctCpnYEKqPRiJ8QSi3Jk2vUTNc&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=KNZb5r6gQPMf2IIy1bKxEw&oh=00_AfYLr1lhMohn6jVoKiYyCxUZ_kxkIrdiRmNmSypHB7d-Mw&oe=68D39849" },
+    { id: 19, name: "El Sol", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/548267904_122119301444976958_7526877399635760399_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=f727a1&_nc_ohc=iuhgETkl-kAQ7kNvwFDT4bH&_nc_oc=AdkHdKoaThKkxkKhBch5C7dPdsr3vY5tmlZxikfqa5G6bJQXzcKQVlIa0K1v5f7FZ-U&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=pRBpZhhTjXFzPBFYSqJQ1A&oh=00_Afb1tdkSht0tybaGO599LAzviGxSa1HQvPDJ_AcHozuFGA&oe=68D3938F" },
+    { id: 20, name: "El Juicio", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549032510_122119301492976958_74733388741903718_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=f727a1&_nc_ohc=sW4gGiSbjzUQ7kNvwH6ym87&_nc_oc=AdlPyiXMELosRLo7fWwcDc8x8n6nQlbhUkDdCMfJUN2UQYDVpv4ivlqAW0FvHSQ3lU0&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=6d7cSXpdMMd7EV0KohOCZA&oh=00_AfYqEx7-rVZz6PTbo-40DVw3jmpcJFF1rJiI0wPTj2Xubg&oe=68D39D47" },
+    { id: 21, name: "El Mundo", image: "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/549286620_122119301558976958_8136238780405164929_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=f727a1&_nc_ohc=PeaaphWYaZgQ7kNvwE7hFdK&_nc_oc=AdnieLZrO_GNw0oHGm2iT7tKU1SEyY73eUvZEUVgxMEoYk2b4XXvVbPLcAlaq36Wzf8&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=2vH6cfyWeFM17wYa5w3kNg&oh=00_Afbcjgk4nOdeLgaK3R5uUHQ2-9rjf-zcWtaMoJipFteP8w&oe=68D3A529" }
 ];
 
-// Arcanos Menores completos (56 cartas) - 4 palos de 14 cartas cada uno
-const MINOR_ARCANA = {
-    // COPAS (14 cartas)
-    cups: [
-        { id: "cup-1", name: "As de Copas", image: "images/minor/cups/01-as-copas.jpg" },
-        { id: "cup-2", name: "Dos de Copas", image: "images/minor/cups/02-dos-copas.jpg" },
-        { id: "cup-3", name: "Tres de Copas", image: "images/minor/cups/03-tres-copas.jpg" },
-        { id: "cup-4", name: "Cuatro de Copas", image: "images/minor/cups/04-cuatro-copas.jpg" },
-        { id: "cup-5", name: "Cinco de Copas", image: "images/minor/cups/05-cinco-copas.jpg" },
-        { id: "cup-6", name: "Seis de Copas", image: "images/minor/cups/06-seis-copas.jpg" },
-        { id: "cup-7", name: "Siete de Copas", image: "images/minor/cups/07-siete-copas.jpg" },
-        { id: "cup-8", name: "Ocho de Copas", image: "images/minor/cups/08-ocho-copas.jpg" },
-        { id: "cup-9", name: "Nueve de Copas", image: "images/minor/cups/09-nueve-copas.jpg" },
-        { id: "cup-10", name: "Diez de Copas", image: "images/minor/cups/10-diez-copas.jpg" },
-        { id: "cup-j", name: "Sota de Copas", image: "images/minor/cups/11-sota-copas.jpg" },
-        { id: "cup-q", name: "Reina de Copas", image: "images/minor/cups/12-reina-copas.jpg" },
-        { id: "cup-k", name: "Rey de Copas", image: "images/minor/cups/13-rey-copas.jpg" },
-        { id: "cup-kn", name: "Caballero de Copas", image: "images/minor/cups/14-caballero-copas.jpg" }
-    ],
-    
-    // ESPADAS (14 cartas)
-    swords: [
-        { id: "sword-1", name: "As de Espadas", image: "images/minor/swords/01-as-espadas.jpg" },
-        { id: "sword-2", name: "Dos de Espadas", image: "images/minor/swords/02-dos-espadas.jpg" },
-        { id: "sword-3", name: "Tres de Espadas", image: "images/minor/swords/03-tres-espadas.jpg" },
-        { id: "sword-4", name: "Cuatro de Espadas", image: "images/minor/swords/04-cuatro-espadas.jpg" },
-        { id: "sword-5", name: "Cinco de Espadas", image: "images/minor/swords/05-cinco-espadas.jpg" },
-        { id: "sword-6", name: "Seis de Espadas", image: "images/minor/swords/06-seis-espadas.jpg" },
-        { id: "sword-7", name: "Siete de Espadas", image: "images/minor/swords/07-siete-espadas.jpg" },
-        { id: "sword-8", name: "Ocho de Espadas", image: "images/minor/swords/08-ocho-espadas.jpg" },
-        { id: "sword-9", name: "Nueve de Espadas", image: "images/minor/swords/09-nueve-espadas.jpg" },
-        { id: "sword-10", name: "Diez de Espadas", image: "images/minor/swords/10-diez-espadas.jpg" },
-        { id: "sword-j", name: "Sota de Espadas", image: "images/minor/swords/11-sota-espadas.jpg" },
-        { id: "sword-q", name: "Reina de Espadas", image: "images/minor/swords/12-reina-espadas.jpg" },
-        { id: "sword-k", name: "Rey de Espadas", image: "images/minor/swords/13-rey-espadas.jpg" },
-        { id: "sword-kn", name: "Caballero de Espadas", image: "images/minor/swords/14-caballero-espadas.jpg" }
-    ],
-    
-    // BASTOS/VARAS (14 cartas)
-    wands: [
-        { id: "wand-1", name: "As de Bastos", image: "images/minor/wands/01-as-bastos.jpg" },
-        { id: "wand-2", name: "Dos de Bastos", image: "images/minor/wands/02-dos-bastos.jpg" },
-        { id: "wand-3", name: "Tres de Bastos", image: "images/minor/wands/03-tres-bastos.jpg" },
-        { id: "wand-4", name: "Cuatro de Bastos", image: "images/minor/wands/04-cuatro-bastos.jpg" },
-        { id: "wand-5", name: "Cinco de Bastos", image: "images/minor/wands/05-cinco-bastos.jpg" },
-        { id: "wand-6", name: "Seis de Bastos", image: "images/minor/wands/06-seis-bastos.jpg" },
-        { id: "wand-7", name: "Siete de Bastos", image: "images/minor/wands/07-siete-bastos.jpg" },
-        { id: "wand-8", name: "Ocho de Bastos", image: "images/minor/wands/08-ocho-bastos.jpg" },
-        { id: "wand-9", name: "Nueve de Bastos", image: "images/minor/wands/09-nueve-bastos.jpg" },
-        { id: "wand-10", name: "Diez de Bastos", image: "images/minor/wands/10-diez-bastos.jpg" },
-        { id: "wand-j", name: "Sota de Bastos", image: "images/minor/wands/11-sota-bastos.jpg" },
-        { id: "wand-q", name: "Reina de Bastos", image: "images/minor/wands/12-reina-bastos.jpg" },
-        { id: "wand-k", name: "Rey de Bastos", image: "images/minor/wands/13-rey-bastos.jpg" },
-        { id: "wand-kn", name: "Caballero de Bastos", image: "images/minor/wands/14-caballero-bastos.jpg" }
-    ],
-    
-    // OROS/PENTÁCULOS (14 cartas)
-    pentacles: [
-        { id: "pent-1", name: "As de Oros", image: "images/minor/pentacles/01-as-oros.jpg" },
-        { id: "pent-2", name: "Dos de Oros", image: "images/minor/pentacles/02-dos-oros.jpg" },
-        { id: "pent-3", name: "Tres de Oros", image: "images/minor/pentacles/03-tres-oros.jpg" },
-        { id: "pent-4", name: "Cuatro de Oros", image: "images/minor/pentacles/04-cuatro-oros.jpg" },
-        { id: "pent-5", name: "Cinco de Oros", image: "images/minor/pentacles/05-cinco-oros.jpg" },
-        { id: "pent-6", name: "Seis de Oros", image: "images/minor/pentacles/06-seis-oros.jpg" },
-        { id: "pent-7", name: "Siete de Oros", image: "images/minor/pentacles/07-siete-oros.jpg" },
-        { id: "pent-8", name: "Ocho de Oros", image: "images/minor/pentacles/08-ocho-oros.jpg" },
-        { id: "pent-9", name: "Nueve de Oros", image: "images/minor/pentacles/09-nueve-oros.jpg" },
-        { id: "pent-10", name: "Diez de Oros", image: "images/minor/pentacles/10-diez-oros.jpg" },
-        { id: "pent-j", name: "Sota de Oros", image: "images/minor/pentacles/11-sota-oros.jpg" },
-        { id: "pent-q", name: "Reina de Oros", image: "images/minor/pentacles/12-reina-oros.jpg" },
-        { id: "pent-k", name: "Rey de Oros", image: "images/minor/pentacles/13-rey-oros.jpg" },
-        { id: "pent-kn", name: "Caballero de Oros", image: "images/minor/pentacles/14-caballero-oros.jpg" }
-    ]
-};
+        // Slogans rotativos
+        const slogans = [
+            "Sabiduría ancestral, voz del presente.",
+            "Tu camino, iluminado por el Tarot.",
+            "El Tarot no predice… revela.",
+            "Donde las cartas se convierten en guía."
+        ];
 
-// Base de datos de cartas con significados completos
-const tarotDeck = [
-    // Arcanos Mayores
-    { name: "El Loco", meaning: "Nuevos comienzos, espontaneidad, fe en el futuro. Representa la aventura y la confianza en lo desconocido. Es momento de dar un salto de fe hacia nuevas experiencias." },
-    { name: "El Mago", meaning: "Poder personal, creatividad, manifestación. Tienes todas las herramientas necesarias para el éxito. Tu voluntad y habilidades pueden materializar tus deseos." },
-    { name: "La Suma Sacerdotisa", meaning: "Intuición, sabiduría oculta, misterios. Confía en tu voz interior y tu sabiduría instintiva. Los secretos se revelarán a través de la meditación." },
-    { name: "La Emperatriz", meaning: "Fertilidad, creatividad, abundancia. Un período de crecimiento y manifestación creativa te espera. La naturaleza y la feminidad sagrada te guían." },
-    { name: "El Emperador", meaning: "Autoridad, estructura, control. Es momento de tomar las riendas y establecer orden en tu vida. El liderazgo y la disciplina son clave." },
-    { name: "El Hierofante", meaning: "Tradición, enseñanza espiritual, conformidad. Busca sabiduría en las enseñanzas establecidas. Un mentor espiritual puede aparecer." },
-    { name: "Los Enamorados", meaning: "Amor, armonía, elecciones importantes. Una decisión significativa sobre relaciones se aproxima. El equilibrio entre opuestos es esencial." },
-    { name: "El Carro", meaning: "Victoria, determinación, control. Tu fuerza de voluntad te llevará al triunfo. Mantén el equilibrio mientras avanzas hacia tus metas." },
-    { name: "La Fuerza", meaning: "Coraje interno, compasión, control suave. Tu fuerza interior superará cualquier obstáculo. La gentileza es más poderosa que la fuerza bruta." },
-    { name: "El Ermitaño", meaning: "Búsqueda interior, guía espiritual, soledad reflexiva. Es momento de mirar hacia adentro. La sabiduría viene de la introspección." },
-    { name: "La Rueda de la Fortuna", meaning: "Cambios, ciclos, destino. Los vientos del cambio soplan a tu favor. Lo que sube baja, y lo que baja sube." },
-    { name: "La Justicia", meaning: "Equilibrio, verdad, causa y efecto. La justicia prevalecerá en tu situación. Las decisiones justas traen consecuencias positivas." },
-    { name: "El Colgado", meaning: "Sacrificio, nueva perspectiva, liberación. A veces hay que soltar para poder avanzar. Un cambio de perspectiva revelará la verdad." },
-    { name: "La Muerte", meaning: "Transformación, final de ciclos, renacimiento. Un final necesario para un nuevo comienzo. La transformación profunda está en marcha." },
-    { name: "La Templanza", meaning: "Equilibrio, moderación, paciencia. La armonía se logra con paciencia y equilibrio. La mezcla perfecta de elementos opuestos." },
-    { name: "El Diablo", meaning: "Tentación, ataduras, materialismo. Examina qué te está limitando realmente. Las cadenas que te atan pueden ser ilusiones." },
-    { name: "La Torre", meaning: "Cambio súbito, revelación, liberación. Aunque parezca destructivo, este cambio es necesario. Las estructuras falsas deben caer." },
-    { name: "La Estrella", meaning: "Esperanza, inspiración, guía espiritual. Tras la tormenta, llega la calma y la esperanza. Tus deseos se están alineando con el universo." },
-    { name: "La Luna", meaning: "Ilusión, intuición, miedos ocultos. No todo es lo que parece, confía en tu intuición. Los misterios se revelan bajo la luz lunar." },
-    { name: "El Sol", meaning: "Alegría, éxito, vitalidad. Un período de gran felicidad y realizaciones se aproxima. La claridad y el optimismo iluminan tu camino." },
-    { name: "El Juicio", meaning: "Renacimiento, llamada superior, perdón. Es hora de juzgar el pasado y renacer. Una llamada espiritual superior te despierta." },
-    { name: "El Mundo", meaning: "Realización, cumplimiento, totalidad. Has completado un ciclo importante en tu vida. El éxito y la plenitud están a tu alcance." },
+        // Base de datos de cartas con significados completos
+        const tarotDeck = [
+            { name: "El Loco", meaning: "Nuevos comienzos, espontaneidad, fe en el futuro. Representa la aventura y la confianza en lo desconocido. Es momento de dar un salto de fe hacia nuevas experiencias." },
+            { name: "El Mago", meaning: "Poder personal, creatividad, manifestación. Tienes todas las herramientas necesarias para el éxito. Tu voluntad y habilidades pueden materializar tus deseos." },
+            { name: "La Suma Sacerdotisa", meaning: "Intuición, sabiduría oculta, misterios. Confía en tu voz interior y tu sabiduría instintiva. Los secretos se revelarán a través de la meditación." },
+            { name: "La Emperatriz", meaning: "Fertilidad, creatividad, abundancia. Un período de crecimiento y manifestación creativa te espera. La naturaleza y la feminidad sagrada te guían." },
+            { name: "El Emperador", meaning: "Autoridad, estructura, control. Es momento de tomar las riendas y establecer orden en tu vida. El liderazgo y la disciplina son clave." },
+            { name: "El Hierofante", meaning: "Tradición, enseñanza espiritual, conformidad. Busca sabiduría en las enseñanzas establecidas. Un mentor espiritual puede aparecer." },
+            { name: "Los Enamorados", meaning: "Amor, armonía, elecciones importantes. Una decisión significativa sobre relaciones se aproxima. El equilibrio entre opuestos es esencial." },
+            { name: "El Carro", meaning: "Victoria, determinación, control. Tu fuerza de voluntad te llevará al triunfo. Mantén el equilibrio mientras avanzas hacia tus metas." },
+            { name: "La Fuerza", meaning: "Coraje interno, compasión, control suave. Tu fuerza interior superará cualquier obstáculo. La gentileza es más poderosa que la fuerza bruta." },
+            { name: "El Ermitaño", meaning: "Búsqueda interior, guía espiritual, soledad reflexiva. Es momento de mirar hacia adentro. La sabiduría viene de la introspección." },
+            { name: "La Rueda de la Fortuna", meaning: "Cambios, ciclos, destino. Los vientos del cambio soplan a tu favor. Lo que sube baja, y lo que baja sube." },
+            { name: "La Justicia", meaning: "Equilibrio, verdad, causa y efecto. La justicia prevalecerá en tu situación. Las decisiones justas traen consecuencias positivas." },
+            { name: "El Colgado", meaning: "Sacrificio, nueva perspectiva, liberación. A veces hay que soltar para poder avanzar. Un cambio de perspectiva revelará la verdad." },
+            { name: "La Muerte", meaning: "Transformación, final de ciclos, renacimiento. Un final necesario para un nuevo comienzo. La transformación profunda está en marcha." },
+            { name: "La Templanza", meaning: "Equilibrio, moderación, paciencia. La armonía se logra con paciencia y equilibrio. La mezcla perfecta de elementos opuestos." },
+            { name: "El Diablo", meaning: "Tentación, ataduras, materialismo. Examina qué te está limitando realmente. Las cadenas que te atan pueden ser ilusiones." },
+            { name: "La Torre", meaning: "Cambio súbito, revelación, liberación. Aunque parezca destructivo, este cambio es necesario. Las estructuras falsas deben caer." },
+            { name: "La Estrella", meaning: "Esperanza, inspiración, guía espiritual. Tras la tormenta, llega la calma y la esperanza. Tus deseos se están alineando con el universo." },
+            { name: "La Luna", meaning: "Ilusión, intuición, miedos ocultos. No todo es lo que parece, confía en tu intuición. Los misterios se revelan bajo la luz lunar." },
+            { name: "El Sol", meaning: "Alegría, éxito, vitalidad. Un período de gran felicidad y realizaciones se aproxima. La claridad y el optimismo iluminan tu camino." },
+            { name: "El Juicio", meaning: "Renacimiento, llamada superior, perdón. Es hora de juzgar el pasado y renacer. Una llamada espiritual superior te despierta." },
+            { name: "El Mundo", meaning: "Realización, cumplimiento, totalidad. Has completado un ciclo importante en tu vida. El éxito y la plenitud están a tu alcance." }
+        ];
 
-    // Copas
-    { name: "As de Copas", meaning: "Nuevo amor, intuición, espiritualidad. Un nuevo comienzo emocional llena tu corazón. Las emociones fluyen como agua fresca." },
-    { name: "Dos de Copas", meaning: "Sociedad, amor mutuo, conexión. Una relación armoniosa florece en tu vida. El equilibrio perfecto entre dar y recibir." },
-    { name: "Tres de Copas", meaning: "Celebración, amistad, comunidad. Es tiempo de festejar con quienes amas. La alegría compartida se multiplica." },
-    { name: "Cuatro de Copas", meaning: "Apatía, contemplación, reevaluación. Reflexiona sobre lo que realmente valoras. Nuevas oportunidades esperan tu atención." },
-    { name: "Cinco de Copas", meaning: "Pérdida, duelo, decepción. Aunque hay dolor, nuevas oportunidades te esperan. No todo está perdido, mira hacia adelante." },
-    { name: "Seis de Copas", meaning: "Nostalgia, recuerdos, inocencia. El pasado trae lecciones valiosas para el presente. La inocencia perdida puede recuperarse." },
-    { name: "Siete de Copas", meaning: "Ilusiones, opciones, sueños. Ten cuidado de no perderte en fantasías irreales. Distingue entre sueños y realidad." },
-    { name: "Ocho de Copas", meaning: "Abandono, búsqueda espiritual, desilusión. Es hora de dejar atrás lo que no te sirve. La búsqueda interior comienza." },
-    { name: "Nueve de Copas", meaning: "Satisfacción, realización de deseos, contentamiento. Tus deseos se están manifestando. La felicidad material y espiritual se unen." },
-    { name: "Diez de Copas", meaning: "Felicidad familiar, armonía emocional, realización. La felicidad duradera está a tu alcance. El hogar y la familia son tu fortaleza." },
-    { name: "Sota de Copas", meaning: "Mensajes emocionales, creatividad, intuición joven. Una nueva perspectiva emocional emerge. La creatividad fluye libremente." },
-    { name: "Caballero de Copas", meaning: "Romance, encanto, seguir el corazón. Un mensajero del amor se acerca. Las emociones guían tus acciones." },
-    { name: "Reina de Copas", meaning: "Intuición, compasión, seguridad emocional. Tu sabiduría emocional es tu mayor fortaleza. Nutres a otros con amor incondicional." },
-    { name: "Rey de Copas", meaning: "Madurez emocional, compasión, control de emociones. Equilibrio entre corazón y mente. El liderazgo emocional sabio." },
+        // Interpretaciones místicas para las tiradas de 3 cartas
+        const interpretations = [
+            "Las cartas han hablado y revelan un camino de transformación. El pasado te ha preparado para este momento, el presente te ofrece las herramientas necesarias, y el futuro brilla con promesas de realización. Confía en tu intuición y abraza los cambios que se aproximan.",
+            "Los arcanos revelan una historia de crecimiento personal. Lo que una vez pareció un obstáculo ahora se convierte en tu mayor fortaleza. El universo conspira a tu favor, alineando las energías para manifestar tus deseos más profundos.",
+            "Esta tirada muestra un período de equilibrio y armonía acercándose. Las lecciones del pasado se integran con la sabiduría del presente, creando una base sólida para decisiones futuras. Tu alma está lista para el próximo nivel de evolución.",
+            "Las cartas susurran secretos de abundancia y realización. Un ciclo se cierra mientras otro comienza, trayendo consigo oportunidades doradas. Mantén el corazón abierto y la mente clara, pues grandes cambios positivos se avecinan.",
+            "Los símbolos sagrados revelan un momento de despertar espiritual. Las sincronicidades aumentarán en tu vida, guiándote hacia tu propósito superior. Confía en las señales del universo y permite que la magia fluya a través de ti.",
+            "Esta combinación de cartas habla de sanación profunda y renovación. Viejas heridas encuentran su medicina, y nuevas posibilidades emergen como flores después de la lluvia. Tu fuerza interior es más poderosa de lo que imaginas."
+        ];
 
-    // Espadas
-    { name: "As de Espadas", meaning: "Nueva idea, claridad mental, verdad. Una revelación importante ilumina tu camino. La verdad corta a través de la confusión." },
-    { name: "Dos de Espadas", meaning: "Decisión difícil, estancamiento, equilibrio. Es momento de tomar una decisión importante. El equilibrio mental es crucial." },
-    { name: "Tres de Espadas", meaning: "Dolor, traición, separación. Aunque duele, esta experiencia te hará más fuerte. El corazón herido puede sanar." },
-    { name: "Cuatro de Espadas", meaning: "Descanso, meditación, recuperación. Necesitas un período de paz y reflexión. La sanación mental requiere quietud." },
-    { name: "Cinco de Espadas", meaning: "Conflicto, derrota, tensión. A veces la retirada estratégica es la mejor opción. No todas las batallas vale la pena lucharlas." },
-    { name: "Seis de Espadas", meaning: "Transición, viaje, movimiento hacia la calma. Estás dejando atrás tiempos difíciles. Aguas más tranquilas te esperan." },
-    { name: "Siete de Espadas", meaning: "Engaño, estrategia, actuar solo. Ten cuidado con las intenciones ocultas. La astucia puede ser necesaria." },
-    { name: "Ocho de Espadas", meaning: "Restricción, autolimitación, confusión. Las limitaciones están más en tu mente que en la realidad. La liberación está al alcance." },
-    { name: "Nueve de Espadas", meaning: "Ansiedad, pesadillas, preocupación. Tus miedos son más grandes que los problemas reales. La oscuridad antes del amanecer." },
-    { name: "Diez de Espadas", meaning: "Final doloroso, traición, toque de fondo. Has llegado al final, pero también al nuevo comienzo. El amanecer sigue a la noche más oscura." },
-    { name: "Sota de Espadas", meaning: "Vigilancia, curiosidad, nueva información. Mantente alerta a nuevas revelaciones. La comunicación directa es clave." },
-    { name: "Caballero de Espadas", meaning: "Acción impulsiva, coraje, cambio súbito. La acción rápida será necesaria. La valentía supera los obstáculos." },
-    { name: "Reina de Espadas", meaning: "Independencia, claridad, comunicación directa. Tu mente aguda es tu mejor herramienta. La verdad sin adornos." },
-    { name: "Rey de Espadas", meaning: "Autoridad intelectual, justicia, claridad mental. El liderazgo consciente guía tus decisiones. La sabiduría madura prevalece." },
+        let currentSlogan = 0;
+        let cardsRevealed = false;
+        let selectedCards = [];
 
-    // Bastos
-    { name: "As de Bastos", meaning: "Nueva empresa, creatividad, inspiración. Una chispa de inspiración enciende nuevos proyectos. El fuego sagrado de la creación." },
-    { name: "Dos de Bastos", meaning: "Planificación, decisiones futuras, control personal. Es hora de planificar tu próximo movimiento. El mundo está en tus manos." },
-    { name: "Tres de Bastos", meaning: "Expansión, visión de futuro, comercio. Tus esfuerzos comienzan a dar frutos. La paciencia en la inversión se recompensa." },
-    { name: "Cuatro de Bastos", meaning: "Celebración, armonía, logros. Un momento de alegría y reconocimiento llega. La estabilidad y la felicidad se combinan." },
-    { name: "Cinco de Bastos", meaning: "Competencia, conflicto, desafío. La competencia sana te impulsa hacia adelante. Los desafíos revelan tu verdadera fuerza." },
-    { name: "Seis de Bastos", meaning: "Victoria, reconocimiento público, éxito. Tus logros serán reconocidos públicamente. El triunfo después del esfuerzo." },
-    { name: "Siete de Bastos", meaning: "Defensa, perseverancia, mantener posición. Defiende lo que has construido con determinación. Tu posición es más fuerte de lo que parece." },
-    { name: "Ocho de Bastos", meaning: "Velocidad, comunicación rápida, progreso. Las cosas se aceleran favorablemente. Los mensajes importantes llegan pronto." },
-    { name: "Nueve de Bastos", meaning: "Resistencia, persistencia, casi al final. Aunque estés cansado, la meta está cerca. Un último esfuerzo te dará la victoria." },
-    { name: "Diez de Bastos", meaning: "Sobrecarga, responsabilidad, carga pesada. Es momento de delegar o reorganizar prioridades. El éxito trae nuevas responsabilidades." },
-    { name: "Sota de Bastos", meaning: "Entusiasmo, mensajes, nuevas aventuras. Una oportunidad emocionante se presenta. La juventud y el entusiasmo abren puertas." },
-    { name: "Caballero de Bastos", meaning: "Aventura, impulso, cambio de residencia. La aventura y el cambio llaman a tu puerta. El movimiento trae oportunidades." },
-    { name: "Reina de Bastos", meaning: "Confianza, determinación, independencia. Tu fuerza interior ilumina el camino. El liderazgo natural inspira a otros." },
-    { name: "Rey de Bastos", meaning: "Liderazgo natural, visión empresarial, honor. Tu capacidad de liderazgo inspira a otros. La autoridad se ejerce con sabiduría." },
-
-    // Pentáculos
-    { name: "As de Pentáculos", meaning: "Nueva oportunidad, prosperidad, manifestación. Una oportunidad dorada se presenta. Los cimientos de la abundancia se establecen." },
-    { name: "Dos de Pentáculos", meaning: "Equilibrio, múltiples prioridades, adaptabilidad. Necesitas equilibrar diferentes aspectos de tu vida. La flexibilidad es clave." },
-    { name: "Tres de Pentáculos", meaning: "Trabajo en equipo, colaboración, habilidad. Tu talento es reconocido y valorado. La maestría se desarrolla con práctica." },
-    { name: "Cuatro de Pentáculos", meaning: "Seguridad, conservación, control. Es sabia la prudencia, pero no te cierres a nuevas oportunidades. El equilibrio entre ahorrar y gastar." },
-    { name: "Cinco de Pentáculos", meaning: "Pérdida financiera, inseguridad, exclusión. Aunque hay dificultades, la ayuda está disponible. La solidaridad en tiempos difíciles." },
-    { name: "Seis de Pentáculos", meaning: "Generosidad, reciprocidad, compartir recursos. Dar y recibir están en perfecto equilibrio. La caridad consciente beneficia a todos." },
-    { name: "Siete de Pentáculos", meaning: "Evaluación, paciencia, inversión a largo plazo. Tu paciencia será recompensada. Los frutos maduran con el tiempo." },
-    { name: "Ocho de Pentáculos", meaning: "Trabajo duro, dedicación, maestría. Tu dedicación al perfeccionamiento da frutos. La excelencia requiere práctica constante." },
-    { name: "Nueve de Pentáculos", meaning: "Independencia financiera, lujo, autosuficiencia. Has alcanzado la independencia deseada. El disfrute merecido de los logros." },
-    { name: "Diez de Pentáculos", meaning: "Riqueza familiar, herencia, estabilidad a largo plazo. La prosperidad duradera es tuya. El legado se construye generación a generación." },
-    { name: "Sota de Pentáculos", meaning: "Oportunidad de estudio, nueva habilidad, enfoque práctico. Una oportunidad de aprendizaje aparece. El conocimiento práctico abre puertas." },
-    { name: "Caballero de Pentáculos", meaning: "Responsabilidad, trabajo duro, productividad. El progreso constante te lleva al éxito. La dedicación metódica rinde frutos." },
-    { name: "Reina de Pentáculos", meaning: "Abundancia práctica, seguridad, generosidad. Tu sabiduría práctica nutre a otros. La prosperidad se comparte con amor." },
-    { name: "Rey de Pentáculos", meaning: "Éxito financiero, seguridad, generosidad. Has alcanzado la maestría en el mundo material. El liderazgo próspero y benevolente." }
-];
-
-// Slogans rotativos
-const slogans = [
-    "Sabiduría ancestral, voz del presente.",
-    "Tu camino, iluminado por el Tarot.",
-    "El Tarot no predice… revela.",
-    "Donde las cartas se convierten en guía."
-];
-
-// Interpretaciones místicas para las tiradas de 3 cartas
-const interpretations = [
-    "Las cartas han hablado y revelan un camino de transformación. El pasado te ha preparado para este momento, el presente te ofrece las herramientas necesarias, y el futuro brilla con promesas de realización. Confía en tu intuición y abraza los cambios que se aproximan.",
-    
-    "Los arcanos revelan una historia de crecimiento personal. Lo que una vez pareció un obstáculo ahora se convierte en tu mayor fortaleza. El universo conspira a tu favor, alineando las energías para manifestar tus deseos más profundos.",
-    
-    "Esta tirada muestra un período de equilibrio y armonía acercándose. Las lecciones del pasado se integran con la sabiduría del presente, creando una base sólida para decisiones futuras. Tu alma está lista para el próximo nivel de evolución.",
-    
-    "Las cartas susurran secretos de abundancia y realización. Un ciclo se cierra mientras otro comienza, trayendo consigo oportunidades doradas. Mantén el corazón abierto y la mente clara, pues grandes cambios positivos se avecinan.",
-    
-    "Los símbolos sagrados revelan un momento de despertar espiritual. Las sincronicidades aumentarán en tu vida, guiándote hacia tu propósito superior. Confía en las señales del universo y permite que la magia fluya a través de ti.",
-    
-    "Esta combinación de cartas habla de sanación profunda y renovación. Viejas heridas encuentran su medicina, y nuevas posibilidades emergen como flores después de la lluvia. Tu fuerza interior es más poderosa de lo que imaginas."
-];
-
-let currentSlogan = 0;
-let cardsRevealed = false;
-let selectedCards = [];
-
-// Inicialización después de cargar la página
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-        createSparkles();
-        showSlogans();
-        createStars();
-    }, 4500);
-});
-
-// Crear partículas brillantes
-function createSparkles() {
-    const sparklesContainer = document.getElementById('sparkles');
-    
-    setInterval(() => {
-        if (sparklesContainer.children.length < 30) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.animationDelay = Math.random() * 2 + 's';
-            sparkle.style.animationDuration = (3 + Math.random() * 2) + 's';
-            sparklesContainer.appendChild(sparkle);
-            
+        // Inicialización después de cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
-                if (sparkle.parentNode) {
-                    sparkle.remove();
+                createSparkles();
+                showSlogans();
+                createStars();
+            }, 4500);
+        });
+
+        // Crear partículas brillantes
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparkles');
+            
+            setInterval(() => {
+                if (sparklesContainer.children.length < 30) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.animationDelay = Math.random() * 2 + 's';
+                    sparkle.style.animationDuration = (3 + Math.random() * 2) + 's';
+                    sparklesContainer.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        if (sparkle.parentNode) {
+                            sparkle.remove();
+                        }
+                    }, 5000);
                 }
-            }, 5000);
+            }, 300);
         }
-    }, 300);
-}
 
-// Animación de texto letra por letra
-function animateText(text, element) {
-    element.innerHTML = '';
-    const letters = text.split('');
-    
-    letters.forEach((letter, index) => {
-        const span = document.createElement('span');
-        span.className = 'letter';
-        span.textContent = letter === ' ' ? '\u00A0' : letter;
-        span.style.animationDelay = index * 0.08 + 's';
-        element.appendChild(span);
-    });
-}
-
-// Mostrar slogans rotativos
-function showSlogans() {
-    const sloganElement = document.getElementById('slogan');
-    
-    function showNextSlogan() {
-        sloganElement.style.opacity = '0';
-        
-        setTimeout(() => {
-            animateText(slogans[currentSlogan], sloganElement);
-            sloganElement.style.opacity = '1';
-            currentSlogan = (currentSlogan + 1) % slogans.length;
-        }, 600);
-    }
-    
-    showNextSlogan();
-    setInterval(showNextSlogan, 5000);
-}
-
-// Función principal para revelar cartas
-function revealCards() {
-    if (cardsRevealed) {
-        resetCards();
-        return;
-    }
-    
-    const button = document.querySelector('.reveal-button');
-    button.disabled = true;
-    button.textContent = '🔮 Consultando los Arcanos... 🔮';
-    
-    cardsRevealed = true;
-    selectedCards = getRandomCards(3);
-    
-    setTimeout(() => {
-        for (let i = 1; i <= 3; i++) {
-            const card = document.getElementById(`card${i}`);
-            const cardData = selectedCards[i - 1];
+        // Animación de texto letra por letra
+        function animateText(text, element) {
+            element.innerHTML = '';
+            const letters = text.split('');
             
-            document.getElementById(`cardName${i}`).textContent = cardData.name;
-            document.getElementById(`cardMeaning${i}`).textContent = cardData.meaning;
+            letters.forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.className = 'letter';
+                span.textContent = letter === ' ' ? '\u00A0' : letter;
+                span.style.animationDelay = index * 0.08 + 's';
+                element.appendChild(span);
+            });
+        }
+
+        // Mostrar slogans rotativos
+        function showSlogans() {
+            const sloganElement = document.getElementById('slogan');
+            
+            function showNextSlogan() {
+                sloganElement.style.opacity = '0';
+                
+                setTimeout(() => {
+                    animateText(slogans[currentSlogan], sloganElement);
+                    sloganElement.style.opacity = '1';
+                    currentSlogan = (currentSlogan + 1) % slogans.length;
+                }, 600);
+            }
+            
+            showNextSlogan();
+            setInterval(showNextSlogan, 5000);
+        }
+
+        // Función principal para revelar cartas
+        function revealCards() {
+            if (cardsRevealed) {
+                resetCards();
+                return;
+            }
+            
+            const button = document.querySelector('.reveal-button');
+            button.disabled = true;
+            button.textContent = '🔮 Consultando los Arcanos... 🔮';
+            
+            cardsRevealed = true;
+            selectedCards = getRandomCards(3);
             
             setTimeout(() => {
-                card.classList.add('flipped');
+                for (let i = 1; i <= 3; i++) {
+                    const card = document.getElementById(`card${i}`);
+                    const cardData = selectedCards[i - 1];
+                    
+                    document.getElementById(`cardName${i}`).textContent = cardData.name;
+                    document.getElementById(`cardMeaning${i}`).textContent = cardData.meaning;
+                    
+                    setTimeout(() => {
+                        card.classList.add('flipped');
+                        
+                        card.style.filter = 'brightness(1.3)';
+                        setTimeout(() => {
+                            card.style.filter = 'brightness(1)';
+                        }, 300);
+                        
+                    }, i * 400);
+                }
                 
-                card.style.filter = 'brightness(1.3)';
                 setTimeout(() => {
-                    card.style.filter = 'brightness(1)';
-                }, 300);
+                    showInterpretation(selectedCards);
+                    
+                    button.disabled = false;
+                    button.textContent = '🔮 Nueva Consulta 🔮';
+                }, 1500);
                 
-            }, i * 400);
+            }, 800);
         }
-        
-        setTimeout(() => {
-            showInterpretation(selectedCards);
+
+        // Resetear cartas para nueva consulta
+        function resetCards() {
+            cardsRevealed = false;
+            const button = document.querySelector('.reveal-button');
+            button.textContent = '🔮 Descubre tu Augur 🔮';
             
-            button.disabled = false;
-            button.textContent = '🔮 Nueva Consulta 🔮';
-        }, 1500);
-        
-    }, 800);
-}
+            const interpretation = document.getElementById('interpretation');
+            interpretation.classList.remove('show');
+            
+            for (let i = 1; i <= 3; i++) {
+                const card = document.getElementById(`card${i}`);
+                card.classList.remove('flipped');
+            }
+        }
 
-// Resetear cartas para nueva consulta
-function resetCards() {
-    cardsRevealed = false;
-    const button = document.querySelector('.reveal-button');
-    button.textContent = '🔮 Descubre tu Augur 🔮';
-    
-    const interpretation = document.getElementById('interpretation');
-    interpretation.classList.remove('show');
-    
-    for (let i = 1; i <= 3; i++) {
-        const card = document.getElementById(`card${i}`);
-        card.classList.remove('flipped');
-    }
-}
+        // Obtener cartas aleatorias sin repetición
+        function getRandomCards(count) {
+            const shuffled = [...tarotDeck].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
 
-// Obtener cartas aleatorias sin repetición
-function getRandomCards(count) {
-    const shuffled = [...tarotDeck].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
-}
+        // Mostrar interpretación personalizada
+        function showInterpretation(cards) {
+            const interpretation = document.getElementById('interpretation');
+            const interpretationText = document.getElementById('interpretationText');
+            
+            const randomInterpretation = interpretations[Math.floor(Math.random() * interpretations.length)];
+            
+            const cardNames = cards.map(card => card.name).join(', ');
+            const personalizedText = `
+                <div style="margin-bottom: 20px;">
+                    <strong>Tus cartas reveladas:</strong> ${cardNames}
+                </div>
+                <div style="line-height: 1.7; text-align: justify;">
+                    ${randomInterpretation}
+                </div>
+                <div style="margin-top: 25px; padding: 20px; background: rgba(201,169,221,0.1); border-radius: 15px; border-left: 4px solid #a688b5;">
+                    <strong>Consejo de los Arcanos:</strong> Las cartas que han aparecido en tu camino no son casualidad. 
+                    Cada símbolo, cada mensaje, resuena con las vibraciones de tu alma en este momento. 
+                    Medita sobre estas revelaciones y permite que su sabiduría guíe tus próximos pasos.
+                </div>
+            `;
+            
+            interpretationText.innerHTML = personalizedText;
+            
+            setTimeout(() => {
+                interpretation.classList.add('show');
+            }, 200);
+        }
 
-// Mostrar interpretación personalizada
-function showInterpretation(cards) {
-    const interpretation = document.getElementById('interpretation');
-    const interpretationText = document.getElementById('interpretationText');
-    
-    const randomInterpretation = interpretations[Math.floor(Math.random() * interpretations.length)];
-    
-    const cardNames = cards.map(card => card.name).join(', ');
-    const personalizedText = `
-        <div style="margin-bottom: 20px;">
-            <strong>Tus cartas reveladas:</strong> ${cardNames}
-        </div>
-        <div style="line-height: 1.7; text-align: justify;">
-            ${randomInterpretation}
-        </div>
-        <div style="margin-top: 25px; padding: 20px; background: rgba(201,169,221,0.1); border-radius: 15px; border-left: 4px solid #a688b5;">
-            <strong>Consejo de los Arcanos:</strong> Las cartas que han aparecido en tu camino no son casualidad. 
-            Cada símbolo, cada mensaje, resuena con las vibraciones de tu alma en este momento. 
-            Medita sobre estas revelaciones y permite que su sabiduría guíe tus próximos pasos.
-        </div>
-    `;
-    
-    interpretationText.innerHTML = personalizedText;
-    
-    setTimeout(() => {
-        interpretation.classList.add('show');
-    }, 200);
-}
+        // Crear estrellas en el footer
+        function createStars() {
+            const starContainer = document.getElementById('starryBackground');
+            const starCount = 30;
 
-// Crear estrellas en el footer
-function createStars() {
-    const starContainer = document.getElementById('starryBackground');
-    const starCount = 30;
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 70 + '%';
+                
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                star.style.animationDelay = Math.random() * 3 + 's';
+                
+                starContainer.appendChild(star);
+            }
+        }
+        // Crear pasto en el footer
+function createGrass() {
+    const grassContainer = document.getElementById('grassContainer');
+    const grassCount = 30;
 
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 70 + '%';
-        
-        const size = Math.random() * 3 + 1;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        
-        star.style.animationDelay = Math.random() * 3 + 's';
-        
-        starContainer.appendChild(star);
+    for (let i = 0; i < grassCount; i++) {
+        const blade = document.createElement('div');
+        blade.className = 'grass-blade';
+
+        blade.style.left = Math.random() * 100 + '%';
+
+        const height = Math.random() * 20 + 10;
+        blade.style.height = height + 'px';
+
+        blade.style.animationDelay = (Math.random() * 2 + 1.5) + 's';
+
+        grassContainer.appendChild(blade);
     }
 }
 
 // Efectos de hover en las cartas
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.tarot-card');
-    
+
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             if (!this.classList.contains('flipped')) {
@@ -409,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.style.boxShadow = '0 20px 50px rgba(201,169,221,0.4)';
             }
         });
-        
+
         card.addEventListener('mouseleave', function() {
             if (!this.classList.contains('flipped')) {
                 this.style.transform = '';
@@ -422,161 +296,25 @@ document.addEventListener('DOMContentLoaded', function() {
 // Efectos de partículas en el botón
 document.addEventListener('DOMContentLoaded', function() {
     const button = document.querySelector('.reveal-button');
-    
+
     button.addEventListener('mouseenter', function() {
         for (let i = 0; i < 6; i++) {
-            setTimeout(() => {
-                const particle = document.createElement('div');
-                particle.style.position = 'absolute';
-                particle.style.width = '4px';
-                particle.style.height = '4px';
-                particle.style.background = '#c9a9dd';
-                particle.style.borderRadius = '50%';
-                particle.style.pointerEvents = 'none';
-                particle.style.zIndex = '9999';
-                
-                const rect = button.getBoundingClientRect();
-                particle.style.left = (rect.left + Math.random() * rect.width) + 'px';
-                particle.style.top = (rect.top + Math.random() * rect.height) + 'px';
-                
-                document.body.appendChild(particle);
-                
-                let opacity = 1;
-                let y = 0;
-                const animate = setInterval(() => {
-                    opacity -= 0.02;
-                    y -= 2;
-                    particle.style.opacity = opacity;
-                    particle.style.transform = `translateY(${y}px)`;
-                    
-                    if (opacity <= 0) {
-                        clearInterval(animate);
-                        particle.remove();
-                    }
-                }, 16);
-                
-            }, i * 50);
+            setTimeout(()=> {
+                const particle = document
+            .createAttribute('div');
+                particle.className = 'button-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                button.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }, i * 100); 
         }
     });
 });
-
-// FUNCIONES AVANZADAS PARA MANEJO DE IMÁGENES
-
-// Función para obtener todas las cartas (Mayores + Menores)
-function getAllCards() {
-    const allCards = [...MAJOR_ARCANA];
-    
-    // Agregar todas las cartas menores
-    Object.values(MINOR_ARCANA).forEach(suit => {
-        allCards.push(...suit);
-    });
-    
-    return allCards; // Total: 78 cartas
-}
-
-// Función para crear HTML de carta con imagen
-function createCardHTML(cardData, index) {
-    return `
-        <div class="card" data-card-id="${cardData.id || cardData.name}" onclick="flipCard(this, ${index})">
-            <div class="card-inner">
-                <!-- REVERSO DE LA CARTA -->
-                <div class="card-back">
-                    <img src="${CARD_BACK_IMAGE}" alt="Reverso de carta" onerror="this.style.display='none'">
-                    <div class="card-pattern">🔮<br>TAROT</div>
-                </div>
-                
-                <!-- FRENTE DE LA CARTA -->
-                <div class="card-front">
-                    <img src="${cardData.image}" alt="${cardData.name}" onerror="handleImageError(this)">
-                    <div class="card-name">${cardData.name}</div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// Manejo de errores de imágenes
-function handleImageError(img) {
-    // Si la imagen no carga, mostrar placeholder
-    img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg==';
-    img.style.objectFit = 'contain';
-}
-
-// Función para barajar y seleccionar cartas
-function shuffleAndSelectCards(numCards = 3) {
-    const allCards = getAllCards();
-    const shuffled = [...allCards].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, numCards);
-}
-
-// Función para generar spread completo (si quieres usar imágenes)
-function generateSpread() {
-    const selectedCards = shuffleAndSelectCards(3);
-    const spreadContainer = document.querySelector('.cards-container');
-    
-    if (spreadContainer) {
-        spreadContainer.innerHTML = selectedCards
-            .map((card, index) => createCardHTML(card, index))
-            .join('');
-    }
-}
-
-// Función para voltear carta (animación de flip)
-function flipCard(cardElement, cardIndex) {
-    if (cardElement.classList.contains('flipped')) return;
-    
-    cardElement.classList.add('flipped');
-    
-    // Opcional: agregar sonido de carta
-    // const flipSound = new Audio('sounds/card-flip.mp3');
-    // flipSound.play().catch(() => {});
-}
-
-// Funciones de utilidad para debugging
-function logCardData() {
-    console.log('Total Arcanos Mayores:', MAJOR_ARCANA.length);
-    console.log('Total Arcanos Menores:', Object.values(MINOR_ARCANA).reduce((acc, suit) => acc + suit.length, 0));
-    console.log('Total cartas:', getAllCards().length);
-}
-
-// Función para precargar imágenes (opcional, para mejorar rendimiento)
-function preloadImages() {
-    const allCards = getAllCards();
-    const imagePromises = [];
-    
-    allCards.forEach(card => {
-        if (card.image) {
-            const img = new Image();
-            img.src = card.image;
-            imagePromises.push(
-                new Promise(resolve => {
-                    img.onload = resolve;
-                    img.onerror = resolve; // Continuar aunque falle
-                })
-            );
-        }
-    });
-    
-    return Promise.all(imagePromises);
-}
-
-// Función para validar estructura de imágenes
-function validateImageStructure() {
-    const allCards = getAllCards();
-    const missingImages = [];
-    
-    allCards.forEach(card => {
-        if (!card.image || card.image === '') {
-            missingImages.push(card.name);
-        }
-    });
-    
-    if (missingImages.length > 0) {
-        console.warn('Cartas sin imagen definida:', missingImages);
-    }
-    
-    return missingImages.length === 0;
-}
+ 
 
 
 
